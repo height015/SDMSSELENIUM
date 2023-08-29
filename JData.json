@@ -1,0 +1,209 @@
+﻿{
+    "LoginParameters": {
+        "Username": "useradmin@xplugng.com",
+        "Password": "Pasxw0rd"
+    },
+
+    //Test with wrong Credentails
+    "LoginFailedTest": {
+        "Username": "testuser@gmail.com",
+        "Password": "testpassWord!"
+    },
+
+    //Test with wrong Credentails - Empty User Name
+    "LoginEmptyUserName": {
+        "Username": "",
+        "Password": "testpassWord!"
+    },
+
+    //Test with wrong Credentails - Empty User Name and Password
+    "LoginEmptyUserPass": {
+        "Username": "",
+        "Password": ""
+    },
+
+
+    ////////////////////////////// Data Sector ///////////////////////////
+
+    "SectorField": {
+        "Name": "Oil Magnate Mode3 Selenium",
+        "Title": "Oil Magnate Mode3 Selenium"
+    },
+
+    "SectorFieldEmpty": {
+        "Name": " ",
+        "Title": " "
+    },
+
+    "CheckBoxNumbers": {
+        "Number": "6"
+    },
+
+
+
+
+    //CatalogueSelector
+
+    //As at the time of Development These are the OptionToSelect Text you can add Below
+
+    //External Sector 1
+    //Financial Sector 2
+    //Banking Sector
+    //Real Sector
+    //Cash Policy Sector
+    //Public Sector
+    //Private Sector
+    //Enterprise Sector
+    //Monetary Nathan New
+    //Monetary Kabir
+    //External Lamin
+
+
+    "CatalogueSelector": {
+        "OptionToSelect": "Banking Sector"
+    },
+
+
+    //As at the time of Development These are the OptionToSelect values you can add Below
+
+    //104"
+    //107"
+    //111"
+    //105"
+    //112"
+    //113"
+    //118"
+    //119"
+    //124"
+    //125"
+    //182"
+
+
+
+    "CatalogueSelectorValue": {
+        "value": "182"
+    },
+
+
+
+    //Tables
+    //This are the options values as at the implementation of this
+
+
+    //<option value="">-- Please Select --</option>
+    //			<option value="107">Financial Sector 2</option>
+    //			<option value="111">Banking Sector</option>
+    //			<option value="105">Real Sector</option>
+    //			<option value="112">Cash Policy Sector</option>
+    //			<option value="113">Public Sector</option>
+    //			<option value="118">Private Sector</option>
+    //			<option value="119">Enterprise Sector</option>
+    //			<option value="124">Monetary Nathan New</option>
+    //			<option value="125">Monetary Kabir</option>
+    //			<option value="182">External Lamin</option>
+
+    "TableDataSelector": {
+        "OptionToSelect": "Financial Sector 2"
+    },
+
+    //For Table Freq
+    //<select class="form-control" id="FrequencyId" style="width:100%" required="" data-parsley-required-message="Kindly Select Frequency">
+    //		<option value="">-- Please Select --</option>
+    //				<option value="18">Monthly</option>
+    //				<option value="17">Yearly</option>
+    //				<option value="21">Bi Monthly</option>
+    //				<option value="24">Quarterly</option>
+    //</select>
+
+
+    "TableFrequency": {
+        "OptionToSelect": "Yearly"
+    },
+
+
+    //TableUnit Use Index here from 0-2
+
+
+    "TableUnit": {
+        "OptionToSelect": "2"
+    },
+
+    "TableNewData": {
+        "Name": "Selenium Name",
+        "Title": "Selenium Name",
+        "Description": "Selenium Name"
+    },
+
+    //This Value is either True or False
+    "DataTableSetting": {
+        "Data1": "True",
+        "Data2": "True",
+        "Data3": "True",
+        "Data4": "False",
+        "Data5": "False"
+    },
+
+    //Data Value for the Enabled TextBoxes
+    "DataTableTxtVal": {
+        "Txt1": "Selenium",
+        "Txt2": "Selenium",
+        "Txt3": "Selenium",
+        "Txt4": "Selenium",
+        "Txt5": "Selenium"
+    },
+
+    ///Frequency
+
+    "DataFrequency": {
+        "Name": "New Data Category 06011 Selenium",
+        "ShortName": "New Data Category 06011 Selenium Title"
+    },
+
+
+    //Units
+    "DataUnit": {
+        "Name": "Selenium",
+        "ShortName": "Selenium"
+    },
+
+
+    //Data Entities
+    "DataEntities": {
+        "Name": "Selenium",
+        "ShortName": "Selenium"
+    },
+
+    //IndicatorDataSelector
+    "IndicatorDataSelector": {
+        "SectorIndex": "2",
+        "CategoryIndex": "1",
+        "TableIndex": "1"
+    },
+
+    "NewDataIndicator": {
+        "TopLevelIndi": "2",
+        "Name": "Selenium",
+        "Title": "Selenium",
+        "EmboldenIndicatorTitle": "True",
+        "DisplayOrder": "1",
+        "DisplayInChart": "True",
+        "TitleToDisplay":  "Selenium Test"
+
+    },
+
+
+
+    ///DataCategory
+
+    "DataCategory": {
+        "Name": "New Data Category 06011 Selenium",
+        "Title": "New Data Category 06011 Selenium Title"
+    },
+
+    //////////// Request Information Input Fields //////////////
+
+    "RequestInformation": {
+        "Title": "Selenium Test Premium Check1 Test212",
+        "Reason": "Test Reason Selunium Premium1 Test212"
+    }
+}
