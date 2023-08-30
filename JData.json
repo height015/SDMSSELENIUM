@@ -26,8 +26,8 @@
     ////////////////////////////// Data Sector ///////////////////////////
 
     "SectorField": {
-        "Name": "Oil Magnate Mode3 Selenium",
-        "Title": "Oil Magnate Mode3 Selenium"
+        "Name": "Oil  Selenium 597621",
+        "Title": "Oil Selenium 597621"
     },
 
     "SectorFieldEmpty": {
@@ -60,7 +60,7 @@
 
 
     "CatalogueSelector": {
-        "OptionToSelect": "Banking Sector"
+        "OptionToSelect": "Agricultural Sector"
     },
 
 
@@ -103,7 +103,7 @@
     //			<option value="182">External Lamin</option>
 
     "TableDataSelector": {
-        "OptionToSelect": "Financial Sector 2"
+        "OptionToSelect": "Agricultural Sector"
     },
 
     //For Table Freq
@@ -117,7 +117,7 @@
 
 
     "TableFrequency": {
-        "OptionToSelect": "Yearly"
+        "OptionToSelect": "Weekly"
     },
 
 
@@ -129,9 +129,9 @@
     },
 
     "TableNewData": {
-        "Name": "Selenium Name",
-        "Title": "Selenium Name",
-        "Description": "Selenium Name"
+        "Name": "Selenium Oil",
+        "Title": "Selenium Gas",
+        "Description": "Selenium Acid"
     },
 
     //This Value is either True or False
@@ -139,24 +139,24 @@
         "Data1": "True",
         "Data2": "True",
         "Data3": "True",
-        "Data4": "False",
+        "Data4": "True",
         "Data5": "False"
     },
 
     //Data Value for the Enabled TextBoxes
     "DataTableTxtVal": {
-        "Txt1": "Selenium",
-        "Txt2": "Selenium",
-        "Txt3": "Selenium",
-        "Txt4": "Selenium",
-        "Txt5": "Selenium"
+        "Txt1": "Selenium11",
+        "Txt2": "Selenium12",
+        "Txt3": "Selenium13",
+        "Txt4": "Selenium14",
+        "Txt5": "Selenium05"
     },
 
     ///Frequency
 
     "DataFrequency": {
-        "Name": "New Data Category 06011 Selenium",
-        "ShortName": "New Data Category 06011 Selenium Title"
+        "Name": "New Data20 Category Selenium",
+        "ShortName": "New Data20 Category  Selenium Title"
     },
 
 
@@ -175,35 +175,50 @@
 
     //IndicatorDataSelector
     "IndicatorDataSelector": {
-        "SectorIndex": "2",
+        "SectorIndex": "1",
         "CategoryIndex": "1",
         "TableIndex": "1"
     },
 
     "NewDataIndicator": {
-        "TopLevelIndi": "2",
-        "Name": "Selenium",
-        "Title": "Selenium",
+        "TopLevelIndi": "1",
+        "Name": "Selem",
+        "Title": "Selem",
         "EmboldenIndicatorTitle": "True",
-        "DisplayOrder": "1",
+        "DisplayOrder": "3",
         "DisplayInChart": "True",
-        "TitleToDisplay":  "Selenium Test"
-
+        "TitleToDisplay": "Selem Check"
     },
 
+    //Workflow Selection
 
+    "WorkFlowSelection": {
+        "CategoryIndex": "1",
+        "SourceTypeIndex": "1",
+        "RoleIndex": "5"
+    },
+
+    "ReviewSelection": {
+        "Comment": "This is Test Approval",
+        "Status": "True"
+    },
 
     ///DataCategory
 
     "DataCategory": {
-        "Name": "New Data Category 06011 Selenium",
-        "Title": "New Data Category 06011 Selenium Title"
+        "Name": "New Data Category Selenium 0133764",
+        "Title": "New Data Category Selenium 0133764"
     },
 
     //////////// Request Information Input Fields //////////////
 
     "RequestInformation": {
-        "Title": "Selenium Test Premium Check1 Test212",
-        "Reason": "Test Reason Selunium Premium1 Test212"
+        "Title": "Selenium Test 1667510",
+        "Reason": "Test Reason 1667510"
+    },
+
+    "CatRequestInformation": {
+        "Title": "Selenium Test Cat 0082310",
+        "Reason": "Test Reason Cat 0602310"
     }
 }

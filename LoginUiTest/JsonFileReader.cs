@@ -209,7 +209,38 @@ public class JsonFileReader
     }
 
 
-    public CatalogueContainer ReadJsonFileForSelectOptionCatalogSelector()
+	public CatRequest ReadJsonFileForSelectCheckBoxesProcessCatNewRequest()
+	{
+		try
+		{
+
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+
+				CatRequest retVal = JsonConvert.DeserializeObject<CatRequest>(jsonContent);
+
+				return retVal;
+			}
+
+
+			return new CatRequest();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+
+			return new CatRequest();
+		}
+	}
+
+
+	public CatalogueContainer ReadJsonFileForSelectOptionCatalogSelector()
     {
         try
         {
@@ -617,6 +648,57 @@ public class JsonFileReader
     }
 
 
+	public WorkFlowSelectionContaner ReadJsonFileWorkFlowSelection()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				WorkFlowSelectionContaner retVal = JsonConvert.DeserializeObject<WorkFlowSelectionContaner>(jsonContent);
+				return retVal;
+			}
+
+			return new WorkFlowSelectionContaner();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+
+			return new WorkFlowSelectionContaner();
+		}
+	}
+	public ReviewSelectionContaner ReadJsonFileWorkFlowReview()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				ReviewSelectionContaner retVal = JsonConvert.DeserializeObject<ReviewSelectionContaner>(jsonContent);
+				return retVal;
+			}
+
+			return new ReviewSelectionContaner();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+
+			return new ReviewSelectionContaner();
+		}
+	}
+
 }
 
 
@@ -716,7 +798,6 @@ public class CheckBoxCount
 
 }
 
-
 public class RequestInformation
 {
     public string Title { get; set; }
@@ -727,6 +808,20 @@ public class RequestInformation
 public class Request
 {
     public RequestInformation RequestInformation { get; set; }
+
+}
+
+
+public class CatRequestInformation
+{
+	public string Title { get; set; }
+	public string Reason { get; set; }
+
+}
+
+public class CatRequest
+{
+	public CatRequestInformation CatRequestInformation { get; set; }
 
 }
 
@@ -954,3 +1049,34 @@ public class NewDataIndicatorContainer
 #endregion
 
 
+#region Authorization Workflow
+public class WorkFlowSelection
+{
+    public int CategoryIndex { get; set; }
+    public int SourceTypeIndex { get; set; }
+    public int RoleIndex { get; set; }
+
+}
+
+public class WorkFlowSelectionContaner
+{
+    public WorkFlowSelection WorkFlowSelection { get; set; }
+
+}
+
+public class ReviewSelection
+{
+	public string Comment { get; set; }
+	public bool Status { get; set; }
+}
+
+public class ReviewSelectionContaner
+{
+	public ReviewSelection ReviewSelection { get; set; }
+
+}
+
+
+
+
+#endregion

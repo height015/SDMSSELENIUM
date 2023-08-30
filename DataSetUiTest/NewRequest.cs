@@ -32,7 +32,7 @@ public class NewRequest
     public IWebElement btnProcessSelected => _webDriver.FindElement(By.Id("btnReqSelect"));
 
 
-    public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
+    public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector(".sa-confirm-button-container .confirm"));
 
 
     public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));

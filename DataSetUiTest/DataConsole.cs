@@ -8,8 +8,10 @@ using OpenQA.Selenium.Support.UI;
 
 public class DataConsole 
 {
-    private static readonly string _URL = "http://197.255.51.104:9008";
+    private static readonly string _URL = "http://197.255.51.104:9035";
 
+    //http://197.255.51.104:9008
+    //http://197.255.51.104:9035
     public static void Main(string[] args)
     {
         using (var driver = new ChromeDriver())
@@ -40,25 +42,28 @@ public class DataConsole
             //}
 
             //ClickDashBorad(driver);
-
-            Sleep(3000);
-
+            //Sleep(3000);
             //ClickDataCatalogCard(driver);
             //Sleep(3000);
             //ClickCategoryCard(driver);
             //ClickNewDataCategoryButton(driver);
             //ClickNewRequest(driver);
             //SelectCheckBoxes(driver);
-            //data.RequestInfBox(driver);
-      
+            //data.CategoryRequestInfBox(driver);
             //ClickDashBorad(driver);
 
-            ClickDataSet(driver);
-            ClickTableCard(driver);
-            TableCatalogueSelectorPopUp(driver);
-            TableCreateNewPopUp(driver);
+            //ClickDataSet(driver);
+            //ClickTableCard(driver);
+            //TableCatalogueSelectorPopUp(driver);
+            //TableCreateNewPopUp(driver);
 
-        }
+
+			ClickDataSet(driver);
+            ClickIndicators(driver);
+            IndicatorCataloguePopUp(driver);
+            CreateNewDataIndicatorPopUp(driver);
+
+		}
 
     }
 
@@ -260,14 +265,17 @@ public class DataConsole
 
             createSec.EnterRequestInfo(RequestInforVal.RequestInformation.Title, RequestInforVal.RequestInformation.Reason);
 
-            Sleep(2000);
+            Sleep(3000);
             createSec.ClickSubmit();
 
-            Sleep(3000);
-            createSec.ClickOk();
+
+			//var waito = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+			////var clickOk = wait.Until(d => d.FindElement(By.CssSelector("button.confirm")));
+			//var clickOk = wait.Until(d => createSec.btnClickOk); 
+			Sleep(4000);
+            createSec.ClickOk(); 
 
             return true;
-
 
         }
 
@@ -278,7 +286,90 @@ public class DataConsole
         }
     }
 
-    public static void ClickProcessButtonOnSelectedDataSet(IWebDriver driver)
+
+	public bool CategoryRequestInfBox(IWebDriver driver)
+	{
+		try
+		{
+			JsonFileReader jsonFileReader = new();
+
+			var loginVal = jsonFileReader.ReadJsonFileSelectCheckBoxes();
+
+			var createSec = new NewRequest(driver);
+
+			var RequestInforVal = jsonFileReader.ReadJsonFileForSelectCheckBoxesProcessCatNewRequest();
+
+			Sleep(3000);
+
+			IWebElement overlappingDiv = driver.FindElement(By.CssSelector(".col-7.text-right"));
+			((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].style.display='none';", overlappingDiv);
+
+			IWebElement button = driver.FindElement(By.Id("btnReqSelect"));
+
+			if (createSec.rows.Count > 10)
+			{
+				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
+
+			}
+
+
+			//or Use this
+
+			if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript(
+	"var elem = arguments[0],                 " +
+	"  box = elem.getBoundingClientRect(),    " +
+	"  cx = box.left + box.width / 2,         " +
+	"  cy = box.top + box.height / 2,         " +
+	"  e = document.elementFromPoint(cx, cy); " +
+	"for (; e; e = e.parentElement) {         " +
+	"  if (e === elem)                        " +
+	"    return true;                         " +
+	"}                                        " +
+	"return false;                            ", button))
+			{
+				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
+			}
+
+			Sleep(3000);
+
+			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+			var dataSetLink = wait.Until(d => d.FindElement(By.Id("btnReqSelect")));
+
+			//The Sleep is Inportant so the Pop-Div is loaded to the  DOM
+			Sleep(4000);
+
+			button.Click();
+
+			Sleep(3000);
+
+			createSec.EnterRequestInfo(RequestInforVal.CatRequestInformation.Title, RequestInforVal.CatRequestInformation.Reason);
+
+			Sleep(2000);
+
+			createSec.ClickSubmit();
+
+			Sleep(3000);
+
+			var waitx = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+			var dataSetLinks = waitx.Until(d => d.FindElement(By.CssSelector("button.confirm")));
+
+			dataSetLinks.Click();
+			//createSec.ClickOk();
+
+			return true;
+
+
+		}
+
+		catch (Exception ex)
+		{
+			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+			return false;
+		}
+	}
+
+
+	public static void ClickProcessButtonOnSelectedDataSet(IWebDriver driver)
     {
         try
         {
@@ -693,7 +784,12 @@ public class DataConsole
 
             table.ClickSubmit();
 
-        }
+			Sleep(4000);
+
+            table.ClickOk();
+
+
+		}
         catch (Exception ex)
         {
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
@@ -728,16 +824,19 @@ public class DataConsole
 
             var retVal = jsonFileReader.ReadJsonFileDataIndicator();
 
+            Sleep(2000);
             //Access the Sector
             SelectElement dropdownSec = new SelectElement(inidi.dropDownCascadeSecor);
             dropdownSec.SelectByIndex(retVal.IndicatorDataSelector.SectorIndex);
 
-            //Access the Category
-            SelectElement dropdownCat = new SelectElement(inidi.dropDownCat);
+			Sleep(2000);
+			//Access the Category
+			SelectElement dropdownCat = new SelectElement(inidi.dropDownCat);
             dropdownCat.SelectByIndex(retVal.IndicatorDataSelector.CategoryIndex);
 
-            //Access the Category
-            SelectElement dropdownTab = new SelectElement(inidi.dropDownTable);
+			Sleep(2000);
+			//Access the Category
+			SelectElement dropdownTab = new SelectElement(inidi.dropDownTable);
             dropdownTab.SelectByIndex(retVal.IndicatorDataSelector.TableIndex);
 
             Sleep(3000);
@@ -756,14 +855,19 @@ public class DataConsole
         {
             var inidi = new Indicator(driver);
 
-            JsonFileReader jsonFileReader = new();
+            Sleep(2000);
+
+            inidi.ClickNew();
+
+			JsonFileReader jsonFileReader = new();
 
             var retVal = jsonFileReader.ReadJsonFileNewDataIndicator();
 
+            Sleep(4000);
 
-            SelectElement dropdown = new SelectElement(inidi.IndiComboTree);
+            //SelectElement dropdown = new SelectElement(inidi.IndiComboTree);
 
-            dropdown.SelectByIndex(retVal.NewDataIndicator.TopLevelIndi);
+            //dropdown.SelectByIndex(retVal.NewDataIndicator.TopLevelIndi);
 
             string textName = retVal.NewDataIndicator.Name;
             inidi.txtBoxName.SendKeys(textName);
@@ -773,18 +877,16 @@ public class DataConsole
 
             if (retVal.NewDataIndicator.EmboldenIndicatorTitle == true)
             {
-                inidi.checkBoxEmph.Click();
 
-                Sleep(3000);
-
-                //var switBox = inidi.checkBoxEmph;
-
-                //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", switBox);
-                //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", switBox);
+				Sleep(3000);
+				var switBox = inidi.checkBoxEmph;
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", switBox);
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", switBox);
             }
 
             int dispOrd = retVal.NewDataIndicator.DisplayOrder;
-            inidi.displayOrder.SendKeys(dispOrd.ToString());
+            inidi.displayOrder.Clear();
+			inidi.displayOrder.SendKeys(dispOrd.ToString());
 
             if (retVal.NewDataIndicator.DisplayInChart == true)
             {
@@ -798,7 +900,10 @@ public class DataConsole
             
                 Sleep(3000);
                 inidi.ClickSubmit();
-        }
+                Sleep(3000);
+			    inidi.ClickOk();
+
+		}
         catch (Exception ex)
         {
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");

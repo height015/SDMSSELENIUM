@@ -15,7 +15,6 @@ public class Indicator
 
     }
 
-
     public IWebElement dropDownCascadeSecor => _webDriver.FindElement(By.Id("SectorId"));
     public IWebElement dropDownCat => _webDriver.FindElement(By.Id("CategoryId"));
     public IWebElement dropDownTable => _webDriver.FindElement(By.Id("TableId"));
