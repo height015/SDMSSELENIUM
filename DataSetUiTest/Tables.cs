@@ -37,8 +37,15 @@ public class Tables
 	public IWebElement txtDataLab5 => _webDriver.FindElement(By.Id("DataLabel5"));
 
 	public IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
+
+	public IWebElement btnSave => _webDriver.FindElement(By.Id("btnSave"));
+
 	public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
 	public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
+
+
+	public IWebElement txtTitle => _webDriver.FindElement(By.Id("txtTitle"));
+	public IWebElement txtReason => _webDriver.FindElement(By.Id("txtReason"));
 
 	public void EnterTableInfoData(string name, string titile, string desc)
 	{
@@ -47,7 +54,14 @@ public class Tables
         txtDescription.SendKeys(desc);
 
     }
-    public void Enable(IWebElement webElement)
+
+	public void EnterRequestInfo(string title, string reason)
+	{
+		txtTitle.SendKeys(title);
+		txtReason.SendKeys(reason);
+		
+	}
+	public void Enable(IWebElement webElement)
     {
         webElement.Clicks();
     }
@@ -55,6 +69,11 @@ public class Tables
     public void ClickContinue()
 	{
 		btnContinue.Clicks();
+	}
+
+	public void ClickSave()
+	{
+		btnSave.Clicks();
 	}
 	public void ClickSubmit()
 	{

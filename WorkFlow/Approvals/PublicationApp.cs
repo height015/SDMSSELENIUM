@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace WorkFlow.Reviews;
-
-public class Archive
+namespace WorkFlow.Reviews.Approvals;
+public class PublicationApp
 {
 	private readonly IWebDriver _webDriver;
 
-	public Archive(IWebDriver webDriver)
+	public PublicationApp(IWebDriver webDriver)
 	{
 		_webDriver = webDriver;
 

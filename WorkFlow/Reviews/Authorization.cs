@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace WorkFlow.Reviews;
 
@@ -32,14 +27,14 @@ public class Authorization
 	//int numberOfRows = rows.Count;
 
 	public IWebElement btnReqInfo => _webDriver.FindElement(By.XPath("//button[contains(text(), 'Request Information')]"));
-	public IWebElement btnRevInfo => _webDriver.FindElement(By.XPath("//button[contains(text(), 'Review Information')]"));
+	public IWebElement btnRevInfo => _webDriver.FindElement(By.CssSelector("a[title='Review Item']"));
 
 
 	public IWebElement txtRevComment => _webDriver.FindElement(By.Id("txtComment"));
 	public IWebElement rdBtnApprove => _webDriver.FindElement(By.CssSelector("input[type='radio'][value='1'][name='rbAuthStatus']"));
 	public IWebElement rdBtnDecline => _webDriver.FindElement(By.CssSelector("input[type='radio'][value='-1'][name='rbAuthStatus']"));
 
-	public IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
+	public IWebElement btnSubmit => _webDriver.FindElement(By.Id("btnSave"));
 	public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
 	public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
 

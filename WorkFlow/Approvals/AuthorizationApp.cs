@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace WorkFlow.Reviews;
+namespace WorkFlow.Reviews.Approvals;
 
-public class Archive
+public class AuthorizationApp
 {
 	private readonly IWebDriver _webDriver;
 
-	public Archive(IWebDriver webDriver)
+	public AuthorizationApp(IWebDriver webDriver)
 	{
 		_webDriver = webDriver;
 
@@ -42,5 +42,6 @@ public class Archive
 	{
 		btnClickOk.Clicks();
 	}
+
 
 }

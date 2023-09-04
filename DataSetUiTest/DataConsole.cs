@@ -41,6 +41,7 @@ public class DataConsole
             //    data.RequestInfBox(driver);
             //}
 
+
             //ClickDashBorad(driver);
             //Sleep(3000);
             //ClickDataCatalogCard(driver);
@@ -58,23 +59,89 @@ public class DataConsole
             //TableCreateNewPopUp(driver);
 
 
-			ClickDataSet(driver);
-            ClickIndicators(driver);
-            IndicatorCataloguePopUp(driver);
-            CreateNewDataIndicatorPopUp(driver);
+            //ClickDataSet(driver);
+            //         ClickIndicators(driver);
+            //         IndicatorCataloguePopUp(driver);
+            //         CreateNewDataIndicatorPopUp(driver);
 
+
+
+
+
+            if (login)
+            {
+                //Sleep(3000);
+                //ClickDataSet(driver);
+                //Sleep(3000);
+                //ClickSector(driver);
+                //Sleep(3000);
+
+                //CreateNewDataSectorSuccess(driver);
+
+                //ClickNewRequest(driver);
+                //Sleep(2000);
+                //ClickRequestType(driver);
+                //Sleep(3000);
+                //data.RequestInfBox(driver);
+                //Sleep(3000);
+
+                //Category
+                //ClickDataSet(driver);
+                //Sleep(3000);
+                //ClickCategoryCard(driver);
+                //Sleep(3000);
+                //ClickNewRequest(driver);
+                //Sleep(3000);
+                //ClickRequestType(driver);
+                //Sleep(3000);
+                //data.CategoryRequestInfBox(driver);
+                //Sleep(3000);
+
+
+                //Tables
+                //ClickDataSet(driver);
+                //Sleep(3000);
+                //ClickTableCard(driver);
+                //Sleep(3000);
+                //TableCatalogueSelectorPopUp(driver);
+                //Sleep(3000);
+                //TableCreateNewPopUp(driver);
+                //Sleep(3000);
+                //ClickNewRequest(driver);
+                //Sleep(3000);
+                //ClickRequestType(driver);
+                //Sleep(3000);
+                //TableCreateNewReqPopUp(driver);
+
+                //Indicator
+                ClickDataSet(driver);
+                Sleep(3000);
+                ClickIndicators(driver);
+                Sleep(3000);
+                IndicatorCataloguePopUp(driver);
+                Sleep(3000);
+                //CreateNewDataIndicatorPopUp(driver);
+                //Sleep(3000);
+				ClickNewRequest(driver);
+                Sleep(3000);
+				ClickRequestType(driver);
+                Sleep(3000);
+
+				CreateNewReqIndicatorPopUp(driver);
+
+
+
+			}
 		}
 
-    }
+	}
 
     public static void ClickDashBorad(IWebDriver driver)
     {
         try
         {
             var  dashBoard = driver.FindElement(By.LinkText("Dashboard"));
-
             dashBoard.Click();
-
         }
         catch (Exception ex)
         {
@@ -95,7 +162,6 @@ public class DataConsole
         }
     }
 
-
     //Or This  
     public static bool ClickCategoryCategoryCard(IWebDriver driver)
     {
@@ -113,8 +179,7 @@ public class DataConsole
         }
     }
 
-    #region Sector creation
-
+    #region Sector Creation
     public static void ClickSector(IWebDriver driver)
     {
         try
@@ -128,7 +193,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
     public static string CreateNewDataSectorSuccess(IWebDriver driver)
     {
         try
@@ -164,7 +228,6 @@ public class DataConsole
             return string.Empty;
         }
     }
-
     public static bool ClickNewRequest(IWebDriver driver)
     {
         try
@@ -181,8 +244,91 @@ public class DataConsole
             return false;
         }
     }
+	//var loginVal = jsonFileReader.ReadJsonFileSelectCheckBoxes();
+	public static string ClickRequestType(IWebDriver driver)
+	{
+		try
+		{
+			JsonFileReader lx = new();
+			var createSec = new NewRequest(driver);
 
-    public static string SelectCheckBoxes(IWebDriver driver)
+		    var retVals = lx.ReadJsonFileSelectCheckBoxes();
+
+            var reqType = retVals.CheckBoxNumbers.RequestType;
+            Sleep(3000);
+			IWebElement btn;
+
+			switch (reqType)
+            {
+                case (int)RequestType.AuthorizationRequest:
+					btn = driver.FindElement(By.LinkText("Authorize"));
+                    btn.Click();
+					break;
+                case (int)RequestType.UnAuthorization:
+					btn = driver.FindElement(By.LinkText("Unauthorize"));
+					btn.Click();
+					break;
+                case (int)RequestType.ArchiveRequest:
+					btn = driver.FindElement(By.LinkText("Archive"));
+					btn.Click();
+					break;
+                case (int)RequestType.UnarchiveRequest:
+					btn = driver.FindElement(By.LinkText("Unarchive"));
+					btn.Click();
+					break;
+                case (int)RequestType.ModificationRequest:
+					btn =driver.FindElement(By.LinkText("Modify"));
+                    btn.Click();
+					break;
+                case (int)RequestType.PublicationRequest:
+					btn = driver.FindElement(By.LinkText("Publish"));
+                    btn.Click();
+                    break;
+                case (int)RequestType.UnpublicationRequest:
+					btn = driver.FindElement(By.LinkText("Unpublish"));
+					btn.Click();
+					break;
+                default:
+					btn = driver.FindElement(By.LinkText("Authorize"));
+					btn.Click();
+					break;
+            }
+
+            Sleep(7000);
+			var table = createSec.table;
+            var rowCount = 0;
+			if (table != null)
+            {
+				var rows = createSec.rows;
+				var rowIndexes = retVals.CheckBoxNumbers.GetIndexArray();
+
+                 rowCount = rows.Count() - 1;
+
+				foreach (var item in rowIndexes)
+                { 
+                    
+                    IWebElement checkbox = createSec.rows[item].FindElement(By.Name("SelItemIds"));
+                    checkbox.Click();
+                    rowCount--;
+					if (rowCount <= 0)
+					{
+                        break;
+					}
+
+				}
+            }
+			Sleep(3000);
+
+			return rowCount.ToString();
+		}
+
+		catch (Exception ex)
+		{
+			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+			return string.Empty;
+		}
+	}
+	public static string SelectCheckBoxes(IWebDriver driver)
     {
         try
         {
@@ -197,7 +343,8 @@ public class DataConsole
                 checkbox.Click();
             }
 
-            Sleep(2000);
+            Sleep(3000);
+
             return createSec.rows.Count.ToString();
         }
 
@@ -207,7 +354,6 @@ public class DataConsole
             return string.Empty;
         }
     }
-
     public bool RequestInfBox(IWebDriver driver)
     {
         try
@@ -268,11 +414,7 @@ public class DataConsole
             Sleep(3000);
             createSec.ClickSubmit();
 
-
-			//var waito = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-			////var clickOk = wait.Until(d => d.FindElement(By.CssSelector("button.confirm")));
-			//var clickOk = wait.Until(d => createSec.btnClickOk); 
-			Sleep(4000);
+			Sleep(6000);
             createSec.ClickOk(); 
 
             return true;
@@ -285,8 +427,6 @@ public class DataConsole
             return false;
         }
     }
-
-
 	public bool CategoryRequestInfBox(IWebDriver driver)
 	{
 		try
@@ -366,9 +506,8 @@ public class DataConsole
 			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
 			return false;
 		}
+
 	}
-
-
 	public static void ClickProcessButtonOnSelectedDataSet(IWebDriver driver)
     {
         try
@@ -382,7 +521,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
     public static string CreateNewDataSectorFailed(IWebDriver driver)
     {
         try
@@ -436,8 +574,6 @@ public class DataConsole
 
     #region Data Category
 
- 
-
     //This is used when on the dashboard
     public static void ClickDataCatalogCard(IWebDriver driver)
     {
@@ -472,17 +608,10 @@ public class DataConsole
             JsonFileReader jsonFileReader = new();
 
             var retVal = jsonFileReader.ReadJsonFileForSelectOptionCatalogSelector();
-            // Select by value
 
-            dropdown.SelectByText(retVal.CatalogueSelector?.OptionToSelect);
-
+            dropdown.SelectByIndex(retVal.CatalogueSelector.OptionToSelect);
             Sleep(3000);
-            //// Select by index (0-based)
-            //dropdown.SelectByIndex(2);
             catSec.ClickContinue();
-            // Select by visible text
-            //dropdown.SelectByText("Option Text");
-
             Sleep(3000);
 
         }
@@ -527,45 +656,44 @@ public class DataConsole
         }
     }
 
-    public static bool ClickNewRequestDataCategoryButton(IWebDriver driver)
-    {
-        try
-        {
-            ClickNewRequest(driver);
+    //public static bool ClickNewRequestDataCategoryButton(IWebDriver driver)
+    //{
+    //    try
+    //    {
+    //        ClickNewRequest(driver);
 
-            Sleep(4000);
+    //        Sleep(4000);
 
-            SelectCheckBoxes(driver);
+    //        SelectCheckBoxes(driver);
 
-            var catSec = new CategorySector(driver);
+    //        var catSec = new CategorySector(driver);
 
-            JsonFileReader jsonFileReader = new();
+    //        JsonFileReader jsonFileReader = new();
 
-            var retVal = jsonFileReader.ReadJsonFileForEnterNewDataCategory();
+    //        var retVal = jsonFileReader.ReadJsonFileForEnterNewDataCategory();
 
-            catSec.EnterDataCategory(retVal.DataCategory.Name, retVal.DataCategory.Title);
+    //        catSec.EnterDataCategory(retVal.DataCategory.Name, retVal.DataCategory.Title);
 
-            Sleep(2000);
+    //        Sleep(2000);
 
-            catSec.ClickSubmit();
+    //        catSec.ClickSubmit();
 
-            Sleep(3000);
+    //        Sleep(3000);
 
-            catSec.ClickOk();
+    //        catSec.ClickOk();
 
-            return true;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
-            return false;
-        }
-    }
+    //        return true;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+    //        return false;
+    //    }
+    //}
 
     #endregion
 
     #region Tables
-
     public static void ClickTableCard(IWebDriver driver)
     {
         try
@@ -581,7 +709,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
     public static void TableCatalogueSelectorPopUp(IWebDriver driver)
     {
         try
@@ -598,7 +725,7 @@ public class DataConsole
             var retVal = jsonFileReader.ReadJsonFileForTableDataSector();
             // Select by value
 
-            dropdown.SelectByText(retVal.TableDataSelector?.OptionToSelect);
+            dropdown.SelectByIndex(retVal.TableDataSelector.OptionToSelect);
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
@@ -632,13 +759,16 @@ public class DataConsole
             Sleep(1000);
             var table = new Tables(driver);
 
-            table.ClickNew();
+			table.ClickNew();
 
-            Sleep(3000);
+	
 
-            JsonFileReader jsonFileReader = new();
+			//The Sleep is Inportant Here so the Pop-Div is loaded to the  DOM
+			Sleep(4000);
 
-            var retVal = jsonFileReader.ReadJsonFileForNewDataTable();
+			JsonFileReader jsonFileReader = new();
+
+			var retVal = jsonFileReader.ReadJsonFileForNewDataTable();
 
             // Select by value
             table.EnterTableInfoData(retVal.TableNewData.Name, retVal.TableNewData.Title, retVal.TableNewData.Description);
@@ -650,13 +780,13 @@ public class DataConsole
             var dropFreq = jsonFileReader.ReadJsonFileForTableFrequency();
             // Select by value
 
-            dropdown.SelectByText(dropFreq.TableFrequency.OptionToSelect);
+            dropdown.SelectByIndex(dropFreq.TableFrequency.OptionToSelect);
 
             var dropUnit = jsonFileReader.ReadJsonFileForTableUnit();
 
             dropUn.SelectByIndex(dropUnit.TableUnit.OptionToSelect);
 
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
             var switchBoxControl = jsonFileReader.ReadJsonFileNewDataTableSettings();
 
@@ -796,12 +926,73 @@ public class DataConsole
         }
     }
 
+	public static bool TableCreateNewReqPopUp(IWebDriver driver)
+	{
+		try
+		{
+			JsonFileReader jsonFileReader = new();
+			var table = new Tables(driver);
+
+			var RequestInforVal = jsonFileReader.ReadJsonFileForNewRequestTable();
+			Sleep(3000);
+
+			IWebElement overlappingDiv = driver.FindElement(By.CssSelector(".col-7.text-right"));
+			((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].style.display='none';", overlappingDiv);
+			IWebElement button = driver.FindElement(By.Id("btnReqSelect"));
+
+			//or Use this
+			if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript(
+	"var elem = arguments[0],                 " +
+	"  box = elem.getBoundingClientRect(),    " +
+	"  cx = box.left + box.width / 2,         " +
+	"  cy = box.top + box.height / 2,         " +
+	"  e = document.elementFromPoint(cx, cy); " +
+	"for (; e; e = e.parentElement) {         " +
+	"  if (e === elem)                        " +
+	"    return true;                         " +
+	"}                                        " +
+	"return false;                            ", button))
+			{
+				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
+			}
+
+			Sleep(3000);
+
+			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+			var dataSetLink = wait.Until(d => d.FindElement(By.Id("btnReqSelect")));
+			
+            //The Sleep is Inportant so the Pop-Div is loaded to the  DOM
+			Sleep(4000);
+
+			button.Click();
+
+			Sleep(3000);
+
+			table.EnterRequestInfo(RequestInforVal.TableRequestData.Title, RequestInforVal.TableRequestData.Reason);
+			Sleep(2000);
+
+			table.ClickSave();
+
+			Sleep(4000);
+
+            table.ClickOk(); 
+			
+            return true;
+		}
+
+		catch (Exception ex)
+		{
+			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+			return false;
+		}
+	}
 
 
-    #endregion
+	#endregion
 
-    #region Indicators
-    public static void ClickIndicators(IWebDriver driver)
+	#region Indicators
+
+	public static void ClickIndicators(IWebDriver driver)
     {
         try
         {
@@ -813,7 +1004,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
     public static void IndicatorCataloguePopUp(IWebDriver driver)
     {
         try
@@ -848,7 +1038,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
     public static void CreateNewDataIndicatorPopUp(IWebDriver driver)
     {
         try
@@ -909,13 +1098,71 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
+	public static bool CreateNewReqIndicatorPopUp(IWebDriver driver)
+	{
+		try
+		{
+			JsonFileReader jsonFileReader = new();
 
+			var indicatoor = new Indicator(driver);
 
-    #endregion
+			var RequestInforVal = jsonFileReader.ReadJsonFileForNewRequestIndicator();
+			Sleep(3000);
 
+			IWebElement overlappingDiv = driver.FindElement(By.CssSelector(".col-7.text-right"));
+			((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].style.display='none';", overlappingDiv);
+			IWebElement button = driver.FindElement(By.Id("btnReqSelect"));
 
+			//or Use this
+			if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript(
+	"var elem = arguments[0],                 " +
+	"  box = elem.getBoundingClientRect(),    " +
+	"  cx = box.left + box.width / 2,         " +
+	"  cy = box.top + box.height / 2,         " +
+	"  e = document.elementFromPoint(cx, cy); " +
+	"for (; e; e = e.parentElement) {         " +
+	"  if (e === elem)                        " +
+	"    return true;                         " +
+	"}                                        " +
+	"return false;                            ", button))
+			{
+				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
+			}
 
-    private static void Sleep(int time)
+			Sleep(3000);
+
+			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+			var dataSetLink = wait.Until(d => d.FindElement(By.Id("btnReqSelect")));
+
+			//The Sleep is Inportant so the Pop-Div is loaded to the  DOM
+			Sleep(4000);
+
+			button.Click();
+
+			Sleep(3000);
+
+			indicatoor.EnterRequestInfo(RequestInforVal.IndicatorRequestData.Title, RequestInforVal.IndicatorRequestData.Reason);
+			Sleep(2000);
+
+			indicatoor.ClickSave();
+
+			Sleep(8000);
+
+			indicatoor.ClickOk();
+
+			return true;
+		}
+
+		catch (Exception ex)
+		{
+			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+			return false;
+		}
+	}
+
+	#endregion
+
+	private static void Sleep(int time)
     {
         Thread.Sleep(time);
     }

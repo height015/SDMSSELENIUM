@@ -23,7 +23,7 @@ public class NewRequest
     public IWebElement btnSubmit => _webDriver.FindElement(By.Id("btnSave"));
 
 
-    public IWebElement table => _webDriver.FindElement(By.ClassName("table"));
+    public IWebElement table => _webDriver.FindElement(By.ClassName("table")) ?? null;
 
     // Get all the rows in the table
     public List<IWebElement> rows => table.FindElements(By.TagName("tr")).ToList();

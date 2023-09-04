@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5413835E-CDD7-4BFE-8BD2-1AED8424B420}"
 	ProjectSection(SolutionItems) = preProject
 		JData.json = JData.json
+		DataSetUiTest\RequestType.cs = DataSetUiTest\RequestType.cs
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryUiTest", "DitionaryUiTest\DictionaryUiTest.csproj", "{020BA2F7-80B0-4491-98ED-94E5CCCE6634}"

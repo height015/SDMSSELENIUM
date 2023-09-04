@@ -22,7 +22,6 @@
         "Password": ""
     },
 
-
     ////////////////////////////// Data Sector ///////////////////////////
 
     "SectorField": {
@@ -35,32 +34,31 @@
         "Title": " "
     },
 
+    //This are the RequestType that can be intiated below
+
+    //	AuthorizationRequest = 1,
+    //	UnAuthorization =2,
+    //	ArchiveRequest = 3,
+    //	UnarchiveRequest = 4,
+    //	ModificationRequest = 5,
+    //	PublicationRequest = 6,
+    //	UnpublicationRequest =7
+
+    //Then Indexes to be Selected
+
     "CheckBoxNumbers": {
-        "Number": "6"
+        "Index": "1,2",
+        "RequestType": "1"
     },
-
-
 
 
     //CatalogueSelector
 
     //As at the time of Development These are the OptionToSelect Text you can add Below
-
-    //External Sector 1
-    //Financial Sector 2
-    //Banking Sector
-    //Real Sector
-    //Cash Policy Sector
-    //Public Sector
-    //Private Sector
-    //Enterprise Sector
-    //Monetary Nathan New
-    //Monetary Kabir
-    //External Lamin
-
+    //Put the Index to be selected in the dropdown Here
 
     "CatalogueSelector": {
-        "OptionToSelect": "Agricultural Sector"
+        "OptionToSelect": "1"
     },
 
 
@@ -87,37 +85,17 @@
 
 
     //Tables
-    //This are the options values as at the implementation of this
+    //This are put the index you want selected options this
 
-
-    //<option value="">-- Please Select --</option>
-    //			<option value="107">Financial Sector 2</option>
-    //			<option value="111">Banking Sector</option>
-    //			<option value="105">Real Sector</option>
-    //			<option value="112">Cash Policy Sector</option>
-    //			<option value="113">Public Sector</option>
-    //			<option value="118">Private Sector</option>
-    //			<option value="119">Enterprise Sector</option>
-    //			<option value="124">Monetary Nathan New</option>
-    //			<option value="125">Monetary Kabir</option>
-    //			<option value="182">External Lamin</option>
 
     "TableDataSelector": {
-        "OptionToSelect": "Agricultural Sector"
+        "OptionToSelect": "1"
     },
 
     //For Table Freq
-    //<select class="form-control" id="FrequencyId" style="width:100%" required="" data-parsley-required-message="Kindly Select Frequency">
-    //		<option value="">-- Please Select --</option>
-    //				<option value="18">Monthly</option>
-    //				<option value="17">Yearly</option>
-    //				<option value="21">Bi Monthly</option>
-    //				<option value="24">Quarterly</option>
-    //</select>
-
-
+   //Input the index here
     "TableFrequency": {
-        "OptionToSelect": "Weekly"
+        "OptionToSelect": "1"
     },
 
 
@@ -129,9 +107,9 @@
     },
 
     "TableNewData": {
-        "Name": "Selenium Oil",
-        "Title": "Selenium Gas",
-        "Description": "Selenium Acid"
+        "Name": "Selenium Oil01",
+        "Title": "Selenium Gas01",
+        "Description": "Selenium Acid01"
     },
 
     //This Value is either True or False
@@ -145,18 +123,18 @@
 
     //Data Value for the Enabled TextBoxes
     "DataTableTxtVal": {
-        "Txt1": "Selenium11",
-        "Txt2": "Selenium12",
-        "Txt3": "Selenium13",
-        "Txt4": "Selenium14",
-        "Txt5": "Selenium05"
+        "Txt1": "Selenium111",
+        "Txt2": "Selenium121",
+        "Txt3": "Selenium131",
+        "Txt4": "Selenium141",
+        "Txt5": "Selenium051"
     },
 
     ///Frequency
 
     "DataFrequency": {
-        "Name": "New Data20 Category Selenium",
-        "ShortName": "New Data20 Category  Selenium Title"
+        "Name": "New Category Selenium",
+        "ShortName": "New Category Selenium Title"
     },
 
 
@@ -169,8 +147,8 @@
 
     //Data Entities
     "DataEntities": {
-        "Name": "Selenium",
-        "ShortName": "Selenium"
+        "Name": "Selenium09",
+        "ShortName": "Selenium09"
     },
 
     //IndicatorDataSelector
@@ -182,12 +160,12 @@
 
     "NewDataIndicator": {
         "TopLevelIndi": "1",
-        "Name": "Selem",
-        "Title": "Selem",
+        "Name": "Selams",
+        "Title": "Selams",
         "EmboldenIndicatorTitle": "True",
         "DisplayOrder": "3",
         "DisplayInChart": "True",
-        "TitleToDisplay": "Selem Check"
+        "TitleToDisplay": "Selams Check-Phase"
     },
 
     //Workflow Selection
@@ -195,7 +173,7 @@
     "WorkFlowSelection": {
         "CategoryIndex": "1",
         "SourceTypeIndex": "1",
-        "RoleIndex": "5"
+        "RoleIndex": "1"
     },
 
     "ReviewSelection": {
@@ -206,8 +184,8 @@
     ///DataCategory
 
     "DataCategory": {
-        "Name": "New Data Category Selenium 0133764",
-        "Title": "New Data Category Selenium 0133764"
+        "Name": "New Category Selenium 33764",
+        "Title": "New Category Selenium 33764"
     },
 
     //////////// Request Information Input Fields //////////////
@@ -218,7 +196,17 @@
     },
 
     "CatRequestInformation": {
-        "Title": "Selenium Test Cat 0082310",
-        "Reason": "Test Reason Cat 0602310"
+        "Title": "Selenium Test5 Cat 0082310",
+        "Reason": "Test5 Reason Cat 0602310"
+    },
+
+    "TableRequestData": {
+        "Title": "Selenium Test 60",
+        "Reason": "Test Reason 60"
+    },
+
+    "IndicatorRequestData": {
+        "Title": "Selenium Test 90",
+        "Reason": "Test Reason 90"
     }
 }

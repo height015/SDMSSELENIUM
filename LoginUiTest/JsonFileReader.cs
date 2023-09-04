@@ -415,34 +415,59 @@ public class JsonFileReader
         }
     }
 
-    public TableNewDataContainer ReadJsonFileForCatalogueSelector()
-    {
-        try
-        {
-            string currentDirectory = Directory.GetCurrentDirectory();
-            DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
-            string jsonFileName = "JData.json";
-            string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+	public IndicatorRequestDataContainer ReadJsonFileForNewRequestIndicator()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
 
-            if (File.Exists(jsonFilePath))
-            {
-                var jsonContent = File.ReadAllText(jsonFilePath);
-                TableNewDataContainer retVal = JsonConvert.DeserializeObject<TableNewDataContainer>(jsonContent);
-                return retVal;
-            }
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				IndicatorRequestDataContainer retVal = JsonConvert.DeserializeObject<IndicatorRequestDataContainer>(jsonContent);
+				return retVal;
+			}
 
-            return new TableNewDataContainer();
-        }
-        catch (Exception ex)
-        {
-            var message = ex.Message;
+			return new IndicatorRequestDataContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
 
-            return new TableNewDataContainer();
-        }
-    }
+			return new IndicatorRequestDataContainer();
+		}
+	}
 
+	public TableRequestDataContainer ReadJsonFileForNewRequestTable()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
 
-    public DataTableSettingContainer ReadJsonFileNewDataTableSettings()
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				TableRequestDataContainer retVal = JsonConvert.DeserializeObject<TableRequestDataContainer>(jsonContent);
+				return retVal;
+			}
+
+			return new TableRequestDataContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+
+			return new TableRequestDataContainer();
+		}
+	}
+
+	public DataTableSettingContainer ReadJsonFileNewDataTableSettings()
     {
         try
         {
@@ -788,8 +813,14 @@ public class DataSectorEmpty
 
 public class CheckBoxNumbers
 {
-    public int Number { get; set; }
+    public string Index { get; set; }
+    public int RequestType { get; set; }
 
+
+	public int[] GetIndexArray()
+	{
+		return Index?.Split(',').Select(int.Parse).ToArray() ?? new int[0];
+	}
 }
 
 public class CheckBoxCount
@@ -832,7 +863,7 @@ public class CatRequest
 
 public class CatalogueSelector
 {
-    public string OptionToSelect { get; set; }
+    public int OptionToSelect { get; set; }
 
 }
 public class CatalogueContainer
@@ -875,7 +906,7 @@ public class DataCategoryContainer
 #region Table
 public class TableDataSelector
 {
-    public string OptionToSelect { get; set; }
+    public int OptionToSelect { get; set; }
 }
 
 public class TableDataSelectorContainer
@@ -896,10 +927,20 @@ public class TableNewDataContainer
     public TableNewData TableNewData { get; set; }
 }
 
+public class TableRequestData
+{
+	public string Title { get; set; }
+	public string Reason { get; set; }
 
+
+}
+public class TableRequestDataContainer
+{
+    public TableRequestData TableRequestData { get; set; }
+}
 public class TableFrequency
 {
-    public string OptionToSelect { get; set; }
+    public int OptionToSelect { get; set; }
 }
 
 public class TableFrequencyContainer
@@ -930,6 +971,7 @@ public class DataTableSetting
 public class DataTableSettingContainer
 {
     public DataTableSetting DataTableSetting { get; set; }
+
 }
 
 
@@ -948,6 +990,18 @@ public class DataTableTxtValContainer
     public DataTableTxtVal DataTableTxtVal { get; set; }
 }
 #endregion
+
+public class IndicatorRequestData
+{   
+    public string Title { get; set; }
+	public string Reason { get; set; }
+}
+
+public class IndicatorRequestDataContainer
+{
+    public IndicatorRequestData IndicatorRequestData { get; set; }
+}
+
 
 //Frequncy
 

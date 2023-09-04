@@ -8,20 +8,16 @@ public class Indicator
 
     private readonly IWebDriver _webDriver;
 
-
     public Indicator(IWebDriver webDriver)
     {
         _webDriver = webDriver;
-
     }
-
     public IWebElement dropDownCascadeSecor => _webDriver.FindElement(By.Id("SectorId"));
     public IWebElement dropDownCat => _webDriver.FindElement(By.Id("CategoryId"));
     public IWebElement dropDownTable => _webDriver.FindElement(By.Id("TableId"));
     public IWebElement btnContinue => _webDriver.FindElement(By.Id("btnContinue"));
     public IWebElement Newlink => _webDriver.FindElement(By.CssSelector("a[href^='/dataset/indicators/add']"));
     public IWebElement IndiComboTree => _webDriver.FindElement(By.CssSelector("div#comboTree846411InputWrapper input.comboTreeInputBox"));
-
     public IWebElement txtBoxName => _webDriver.FindElement(By.Id("Name"));
     public IWebElement txtBoxTitle => _webDriver.FindElement(By.Id("Title"));
     public IWebElement checkBoxEmph => _webDriver.FindElement(By.Id("IsEmphasized"));
@@ -32,8 +28,19 @@ public class Indicator
     public IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
     public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
     public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
+    public IWebElement btnSave => _webDriver.FindElement(By.Id("btnSave"));
 
-    public void ClickContinue()
+
+	public IWebElement txtTitle => _webDriver.FindElement(By.Id("txtTitle"));
+	public IWebElement txtReason => _webDriver.FindElement(By.Id("txtReason"));
+
+	public void EnterRequestInfo(string title, string reason)
+	{
+		txtTitle.SendKeys(title);
+		txtReason.SendKeys(reason);
+
+	}
+	public void ClickContinue()
     {
         btnContinue.Clicks();
     }
@@ -49,7 +56,12 @@ public class Indicator
         Newlink.Clicks();
     }
 
-    public void ClickOk()
+	public void ClickSave()
+	{
+		btnSave.Clicks();
+	}
+
+	public void ClickOk()
     {
         btnClickOk.Clicks();
     }

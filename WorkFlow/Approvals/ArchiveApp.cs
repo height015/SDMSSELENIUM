@@ -5,18 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace WorkFlow.Reviews;
+namespace WorkFlow.Reviews.Approvals;
 
-public class Archive
+public class ArchiveApp
 {
 	private readonly IWebDriver _webDriver;
 
-	public Archive(IWebDriver webDriver)
+	public ArchiveApp(IWebDriver webDriver)
 	{
 		_webDriver = webDriver;
 
 	}
-
 	public IWebElement dropDownCat => _webDriver.FindElement(By.Id("ItemCategory"));
 	public IWebElement dropDownType => _webDriver.FindElement(By.Id("ItemType"));
 	public IWebElement btnSearch => _webDriver.FindElement(By.CssSelector("div.col-sm-1 a.item-button"));

@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace WorkFlow.Reviews;
-
-public class Archive
+namespace WorkFlow.Reviews.Approvals;
+public class ModificationApp
 {
 	private readonly IWebDriver _webDriver;
 
-	public Archive(IWebDriver webDriver)
+	public ModificationApp(IWebDriver webDriver)
 	{
 		_webDriver = webDriver;
 
