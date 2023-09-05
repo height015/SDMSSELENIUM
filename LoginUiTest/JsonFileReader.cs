@@ -724,6 +724,32 @@ public class JsonFileReader
 		}
 	}
 
+	public AnalyticsDataSectorContainer ReadJsonCMSAnalytis()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				AnalyticsDataSectorContainer retVal = JsonConvert.DeserializeObject<AnalyticsDataSectorContainer>(jsonContent);
+				return retVal;
+			}
+			return new AnalyticsDataSectorContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+			return new AnalyticsDataSectorContainer();
+		}
+
+	}
+
+
 }
 
 
@@ -991,17 +1017,19 @@ public class DataTableTxtValContainer
 }
 #endregion
 
+
+#region  Indicators
 public class IndicatorRequestData
-{   
+{
     public string Title { get; set; }
-	public string Reason { get; set; }
+    public string Reason { get; set; }
 }
 
 public class IndicatorRequestDataContainer
 {
     public IndicatorRequestData IndicatorRequestData { get; set; }
-}
-
+} 
+#endregion
 
 //Frequncy
 
@@ -1133,4 +1161,32 @@ public class ReviewSelectionContaner
 
 
 
+#endregion
+
+
+
+#region    CMS Analytics
+public class AnalyticsDataSector
+{
+    public int SectorIndex { get; set; }
+    public int CategoryIndex { get; set; }
+    public int TableIndex { get; set; }
+    public string StartDate { get; set; }
+    public string StopDate { get; set; }
+
+
+    public string IndicatorsIndexToSelect { get; set; }
+
+
+    public int[] GetIndexArray()
+    {
+        return IndicatorsIndexToSelect?.Split(',').Select(int.Parse).ToArray() ?? new int[0];
+    }
+
+}
+
+public class AnalyticsDataSectorContainer
+{
+    public AnalyticsDataSector AnalyticsDataSector { get; set; }
+} 
 #endregion

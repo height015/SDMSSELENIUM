@@ -21,6 +21,8 @@ public class Frequency
     public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
     public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
 
+
+
     public void ClickNew()
     {
         Newlink.Clicks();

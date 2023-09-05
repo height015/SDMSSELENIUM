@@ -36,15 +36,11 @@ public class CategorySector
     public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
 
 
-
-
-
     public void EnterDataCategory(string title, string reason)
     {
         txtBoxName.SendKeys(title);
         txtBoxTitle.SendKeys(reason);
     }
-
 
     public void ClickCatalogCard()
     {
@@ -56,17 +52,15 @@ public class CategorySector
         btnContinue.Clicks();
     }
 
-
     public void ClickSubmit()
     {
         btnSubmit.Clicks();
     }
 
-    //public void ClickClose()
-    //{
-    //    btnClose.Clicks();
-    //}
-
+    public void ClickClose()
+    {
+        btnClose.Clicks();
+    }
 
     public void ClickOk()
     {

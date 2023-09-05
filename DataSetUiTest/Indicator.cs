@@ -45,7 +45,6 @@ public class Indicator
         btnContinue.Clicks();
     }
 
-
     public void ClickSubmit()
     {
         btnSubmit.Clicks();

@@ -93,7 +93,7 @@
     },
 
     //For Table Freq
-   //Input the index here
+    //Input the index here
     "TableFrequency": {
         "OptionToSelect": "1"
     },
@@ -208,5 +208,20 @@
     "IndicatorRequestData": {
         "Title": "Selenium Test 90",
         "Reason": "Test Reason 90"
+    },
+
+
+    ////CMS Analytics  Note the IndicatorsIndexToSelect string will be process as an array seperated by ","
+    //And must not be more than 3
+
+    "AnalyticsDataSector": {
+        "SectorIndex": "1",
+        "CategoryIndex": "1",
+        "TableIndex": "1",
+        "IndicatorsIndexToSelect": "1,2",
+        "StartDate": "2021",
+        "StopDate":  "2023"
     }
+
+
 }

@@ -12,13 +12,3 @@ public enum RequestType
 
 }
 
-public enum PeriodType
-{
-	Daily,
-	Weekly,
-	Monthly,
-	Quarterly,
-	Semiannual,
-	Annual,
-	Biannual
-}

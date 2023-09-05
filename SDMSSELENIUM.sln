@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{541383
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryUiTest", "DitionaryUiTest\DictionaryUiTest.csproj", "{020BA2F7-80B0-4491-98ED-94E5CCCE6634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkFlow", "WorkFlow\WorkFlow.csproj", "{CAF375E7-D4A0-4530-8764-F889F7C277D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkFlow", "WorkFlow\WorkFlow.csproj", "{CAF375E7-D4A0-4530-8764-F889F7C277D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMSUI", "CMSUI\CMSUI.csproj", "{2422A9BF-1C71-4E66-9303-999C16637BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{CAF375E7-D4A0-4530-8764-F889F7C277D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAF375E7-D4A0-4530-8764-F889F7C277D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAF375E7-D4A0-4530-8764-F889F7C277D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2422A9BF-1C71-4E66-9303-999C16637BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2422A9BF-1C71-4E66-9303-999C16637BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2422A9BF-1C71-4E66-9303-999C16637BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2422A9BF-1C71-4E66-9303-999C16637BA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

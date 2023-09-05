@@ -126,7 +126,6 @@ public class DataConsole
                 Sleep(3000);
 				ClickRequestType(driver);
                 Sleep(3000);
-
 				CreateNewReqIndicatorPopUp(driver);
 
 

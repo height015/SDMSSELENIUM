@@ -11,14 +11,3 @@ public enum RequestType
 	UnpublicationRequest =7
 
 }
-
-public enum PeriodType
-{
-	Daily,
-	Weekly,
-	Monthly,
-	Quarterly,
-	Semiannual,
-	Annual,
-	Biannual
-}
