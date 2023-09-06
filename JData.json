@@ -215,12 +215,19 @@
     //And must not be more than 3
 
     "AnalyticsDataSector": {
-        "SectorIndex": "1",
+        "SectorIndex": "13",
         "CategoryIndex": "1",
         "TableIndex": "1",
-        "IndicatorsIndexToSelect": "1,2",
+        "IndicatorsIndexToSelect": "1",
         "StartDate": "2021",
-        "StopDate":  "2023"
+        "StopDate": "2023",
+        "Name": "Selenium Name",
+        "Title": "Selenium Title",
+        "SeriesTitle": "Selenium Series",
+        "ChartTypeIndex": "1",
+        "ContentSpotIndex": "1",
+        "Note": "Selenium Test"
+
     }
 
 

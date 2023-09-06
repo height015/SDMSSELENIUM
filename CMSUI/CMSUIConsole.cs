@@ -1,7 +1,10 @@
-﻿using CMSUI;
+﻿using System.Globalization;
+using CMSUI;
 using LoginUiTest;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class CMSUIConsole
 {
@@ -19,7 +22,7 @@ public class CMSUIConsole
 
 			bool login = loginObj.LoginSuccess(driver);
 
-			
+
 			if (login)
 			{
 				//Analytics
@@ -159,6 +162,7 @@ public class CMSUIConsole
 			Sleep(3000);
 
 
+
 			analytics.ClickContinue();
 
 
@@ -193,14 +197,11 @@ public class CMSUIConsole
 
 			var retVal = jsonFileReader.ReadJsonCMSAnalytis();
 
-			var perodTypeVal = analytics.readonlyInput.GetCssValue("value");
+			var perodTypeValz = analytics.readonlyInput;
+			var dataVal = perodTypeValz.GetAttribute("data-value");
+			var perodTypeVal = perodTypeValz.GetAttribute("value");
 
-			var val = ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].value;", analytics.readonlyInput);
 
-			string value = (string)((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].value;", analytics.readonlyInput);
-
-			string emt = val.ToString();
-			
 
 			switch (perodTypeVal)
 			{
@@ -209,12 +210,23 @@ public class CMSUIConsole
 				case "Weekly":
 					int startYear = int.Parse(retVal.AnalyticsDataSector.StartDate);
 					int stopYear = int.Parse(retVal.AnalyticsDataSector.StopDate);
+
+					var startyr = driver.FindElement(By.Id("txtWeekStartPeriod"));  
+					var stopyr = driver.FindElement(By.Id("txtWeekStopPeriod"));  
+
 					DateTime startOfYear = new DateTime(startYear, 1, 1);
+					string formattedstartOfYear = startOfYear.ToString("yyyy-'W'ww", CultureInfo.InvariantCulture);
+
 					DateTime endOfYear = new DateTime(stopYear, 12, 31);
-					analytics.OpenStartDateDrpDwn.Clear();
-					analytics.OpenStopDateDrpDwn.Clear();
-					analytics.OpenStartDateDrpDwn.SelectDropDown(startOfYear.ToString());
-					analytics.OpenStopDateDrpDwn.SelectDropDown(endOfYear.ToString());
+					string formattedendOfYear = startOfYear.ToString("yyyy-'W'ww", CultureInfo.InvariantCulture);
+
+					startyr.Clear();
+					stopyr.Clear();
+					startyr.SendKeys(formattedstartOfYear);
+					perodTypeValz.Click();
+					stopyr.SendKeys(formattedendOfYear);
+					perodTypeValz.Click();
+
 
 					break;
 				case "Monthly":
@@ -223,13 +235,15 @@ public class CMSUIConsole
 					break;
 				case "Semiannual":
 					break;
-				case "Annual":
-					 startYear = int.Parse(retVal.AnalyticsDataSector.StartDate);
-					 stopYear = int.Parse(retVal.AnalyticsDataSector.StopDate);
+				case "Annually":
+					startYear = int.Parse(retVal.AnalyticsDataSector.StartDate);
+					stopYear = int.Parse(retVal.AnalyticsDataSector.StopDate);
 					analytics.OpenStartDateDrpDwn.Clear();
 					analytics.OpenStopDateDrpDwn.Clear();
-					analytics.OpenStartDateDrpDwn.SelectDropDown(startYear.ToString());
-					analytics.OpenStopDateDrpDwn.SelectDropDown(stopYear.ToString());
+					analytics.OpenStartDateDrpDwn.SendKeys(startYear.ToString());
+					perodTypeValz.Click();
+					analytics.OpenStopDateDrpDwn.SendKeys(stopYear.ToString());
+					perodTypeValz.Click();
 					break;
 				case "Biannual":
 					break;
@@ -239,11 +253,26 @@ public class CMSUIConsole
 
 			Sleep(4000);
 
+
 			analytics.btnContinueSelection.Click();
 
-		
 			Sleep(3000);
 
+			//analytics.ClickContentPopUp();
+
+
+			var dataSetLink = driver.FindElement(By.LinkText("Content"));
+			dataSetLink.Click();
+
+			Sleep(3000);
+
+			ProcessAnalyticContent(driver);
+
+			Sleep(3000);
+
+			analytics.btnSaves.Click();
+
+			Sleep(3000);
 
 		}
 		catch (Exception ex)
@@ -253,9 +282,46 @@ public class CMSUIConsole
 	}
 
 
-	#endregion
-	private static void Sleep(int timeVal)
+	public static void ProcessAnalyticContent(IWebDriver driver)
 	{
-		Thread.Sleep(timeVal);
+		try
+		{
+			var analytics = new Analytics(driver);
+
+			JsonFileReader jsonFileReader = new();
+
+			var retVal = jsonFileReader.ReadJsonCMSAnalytis();
+
+
+			var name = retVal.AnalyticsDataSector?.Name;
+			var title = retVal.AnalyticsDataSector?.Title;
+			var titleSeries = retVal.AnalyticsDataSector?.SeriesTitle;
+			var chatType = retVal.AnalyticsDataSector.ChartTypeIndex;
+			var contentType = retVal.AnalyticsDataSector.ContentSpotIndex;
+			var Note = retVal.AnalyticsDataSector?.Note;
+
+			analytics.txtBoxName.SendKeys(name);
+			analytics.txtBoxTitle.SendKeys(title);
+			analytics.txtBoxSeries.SendKeys(titleSeries);
+			analytics.dropDwnSeriesType.SelectDropDown(chatType);
+			analytics.dropDwnContentSpot.SelectDropDown(contentType);
+			analytics.txtNote.SendKeys(Note);
+
+
+			analytics.btnSaveConten.Click();
+
+			
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+		}
+
+
 	}
-}
+		#endregion
+		private static void Sleep(int timeVal)
+		{
+			Thread.Sleep(timeVal);
+		}
+	} 

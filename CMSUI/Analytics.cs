@@ -27,22 +27,31 @@ public class Analytics
 	public IWebElement btnContinueSelection => _webDriver.FindElement(By.Id("btnContSelection"));
 
 
-	public IWebElement OpenStartDateDrpDwn => _webDriver.FindElement(By.Id("txtAnnualStartPeriod"));
-	public IWebElement OpenStopDateDrpDwn => _webDriver.FindElement(By.Id("txtAnnualStopPeriod"));
-
-	public IWebElement readonlyInput => _webDriver.FindElement(By.CssSelector("input[type='text'][aria-describedby='secname'][readonly='']"));
+	public IWebElement OpenStartDateDrpDwn => _webDriver.FindElement(By.Id("txtAnnualStartPeriod"));  //txtWeekStartPeriod
+	public IWebElement OpenStopDateDrpDwn => _webDriver.FindElement(By.Id("txtAnnualStopPeriod"));    //txtWeekStopPeriod
 
 
 
-	//IWebElement desiredDate = driver.FindElement(By.XPath("//td[text()='24']")); // Example XPath for the 24th day
-	//desiredDate.Click();
+	public IWebElement readonlyInput =>  _webDriver.FindElement(By.XPath("//input[@type='text' and @aria-describedby='secname' and @data-value]"));
+
+	public IWebElement contentPopUp => _webDriver.FindElement(By.CssSelector("a[href='/shop/analytics/manage'][data-modal].item-button"));
 
 
 
 
 	public IWebElement txtBoxName => _webDriver.FindElement(By.Id("Name"));
 	public IWebElement txtBoxTitle => _webDriver.FindElement(By.Id("Title"));
+	public IWebElement txtBoxSeries => _webDriver.FindElement(By.Id("SeriesTitle"));
 
+	public IWebElement dropDwnSeriesType => _webDriver.FindElement(By.Id("SeriesType"));
+	public IWebElement dropDwnContentSpot => _webDriver.FindElement(By.Id("ContentSpot"));
+	public IWebElement txtNote => _webDriver.FindElement(By.Id("Note"));
+
+	public IWebElement btnSaveConten => _webDriver.FindElement(By.Id("btnSaveAContentInfo"));
+
+	public IWebElement btnSaves => _webDriver.FindElement(By.Id("btnSaveAContent"));
+
+	
 	public IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
 
 	public IWebElement btnSave => _webDriver.FindElement(By.Id("btnSave"));
@@ -73,7 +82,12 @@ public class Analytics
 	{
 		btnSubmit.Clicks();
 	}
-	
+
+	public void ClickContentPopUp()
+	{
+		contentPopUp.Clicks();
+	}
+
 	public void ClickOk()
 	{
 		btnClickOk.Clicks();

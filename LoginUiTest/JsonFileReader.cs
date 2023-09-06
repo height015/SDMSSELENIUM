@@ -1173,10 +1173,17 @@ public class AnalyticsDataSector
     public int TableIndex { get; set; }
     public string StartDate { get; set; }
     public string StopDate { get; set; }
+	public string IndicatorsIndexToSelect { get; set; }
 
 
-    public string IndicatorsIndexToSelect { get; set; }
+	public string Name { get; set; }
+	public string Title { get; set; }
+	public string SeriesTitle { get; set; }
 
+    public int ChartTypeIndex { get; set; }
+    public int ContentSpotIndex { get; set; }
+
+    public string Note { get; set; }
 
     public int[] GetIndexArray()
     {
