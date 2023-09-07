@@ -22,47 +22,47 @@ public class DataConsole
        
             bool login = loginObj.LoginSuccess(driver);
 
-            //if (login)
-            //{
-            //    Sleep(3000);
-            //    ClickDataSet(driver);
-            //    Sleep(3000);
-            //    ClickSector(driver);
-            //    Sleep(3000);
+            if (login)
+            {
+                Sleep(3000);
+				data.ClickDataSet(driver);
+                Sleep(3000);
+				data.ClickSector(driver);
+                Sleep(3000);
 
-            //    CreateNewDataSectorSuccess(driver);
+				data.CreateNewDataSectorSuccess(driver);
 
-            //    ClickNewRequest(driver);
-            //    Sleep(2000);
-            //    SelectCheckBoxes(driver);
+                ClickNewRequest(driver);
+                Sleep(2000);
+                SelectCheckBoxes(driver);
 
-            //    Sleep(2000);
+                Sleep(2000);
 
-            //    data.RequestInfBox(driver);
-            //}
-
-
-            //ClickDashBorad(driver);
-            //Sleep(3000);
-            //ClickDataCatalogCard(driver);
-            //Sleep(3000);
-            //ClickCategoryCard(driver);
-            //ClickNewDataCategoryButton(driver);
-            //ClickNewRequest(driver);
-            //SelectCheckBoxes(driver);
-            //data.CategoryRequestInfBox(driver);
-            //ClickDashBorad(driver);
-
-            //ClickDataSet(driver);
-            //ClickTableCard(driver);
-            //TableCatalogueSelectorPopUp(driver);
-            //TableCreateNewPopUp(driver);
+                data.RequestInfBox(driver);
+            }
 
 
-            //ClickDataSet(driver);
-            //         ClickIndicators(driver);
-            //         IndicatorCataloguePopUp(driver);
-            //         CreateNewDataIndicatorPopUp(driver);
+            ClickDashBorad(driver);
+            Sleep(3000);
+            ClickDataCatalogCard(driver);
+            Sleep(3000);
+            ClickCategoryCard(driver);
+            ClickNewDataCategoryButton(driver);
+            ClickNewRequest(driver);
+            SelectCheckBoxes(driver);
+            data.CategoryRequestInfBox(driver);
+            ClickDashBorad(driver);
+
+			data.ClickDataSet(driver);
+            ClickTableCard(driver);
+            TableCatalogueSelectorPopUp(driver);
+            TableCreateNewPopUp(driver);
+
+
+			data.ClickDataSet(driver);
+            ClickIndicators(driver);
+            IndicatorCataloguePopUp(driver);
+            CreateNewDataIndicatorPopUp(driver);
 
 
 
@@ -70,51 +70,51 @@ public class DataConsole
 
             if (login)
             {
-                //Sleep(3000);
-                //ClickDataSet(driver);
-                //Sleep(3000);
-                //ClickSector(driver);
-                //Sleep(3000);
+                Sleep(3000);
+				data.ClickDataSet(driver);
+                Sleep(3000);
+				data.ClickSector(driver);
+                Sleep(3000);
+				data.CreateNewDataSectorSuccess(driver);
 
-                //CreateNewDataSectorSuccess(driver);
+                ClickNewRequest(driver);
+                Sleep(2000);
+                ClickRequestType(driver);
+                Sleep(3000);
+                data.RequestInfBox(driver);
+                Sleep(3000);
 
-                //ClickNewRequest(driver);
-                //Sleep(2000);
-                //ClickRequestType(driver);
-                //Sleep(3000);
-                //data.RequestInfBox(driver);
-                //Sleep(3000);
-
-                //Category
-                //ClickDataSet(driver);
-                //Sleep(3000);
-                //ClickCategoryCard(driver);
-                //Sleep(3000);
-                //ClickNewRequest(driver);
-                //Sleep(3000);
-                //ClickRequestType(driver);
-                //Sleep(3000);
-                //data.CategoryRequestInfBox(driver);
-                //Sleep(3000);
+				//Category
+				data.ClickDataSet(driver);
+                Sleep(3000);
+                ClickCategoryCard(driver);
+                Sleep(3000);
+                ClickNewRequest(driver);
+                Sleep(3000);
+                ClickRequestType(driver);
+                Sleep(3000);
+                data.CategoryRequestInfBox(driver);
+                Sleep(3000);
 
 
                 //Tables
-                //ClickDataSet(driver);
-                //Sleep(3000);
-                //ClickTableCard(driver);
-                //Sleep(3000);
-                //TableCatalogueSelectorPopUp(driver);
-                //Sleep(3000);
-                //TableCreateNewPopUp(driver);
-                //Sleep(3000);
-                //ClickNewRequest(driver);
-                //Sleep(3000);
-                //ClickRequestType(driver);
-                //Sleep(3000);
-                //TableCreateNewReqPopUp(driver);
 
-                //Indicator
-                ClickDataSet(driver);
+				data.ClickDataSet(driver);
+                Sleep(3000);
+                ClickTableCard(driver);
+                Sleep(3000);
+                TableCatalogueSelectorPopUp(driver);
+                Sleep(3000);
+                TableCreateNewPopUp(driver);
+                Sleep(3000);
+                ClickNewRequest(driver);
+                Sleep(3000);
+                ClickRequestType(driver);
+                Sleep(3000);
+                TableCreateNewReqPopUp(driver);
+
+				//Indicator
+				data.ClickDataSet(driver);
                 Sleep(3000);
                 ClickIndicators(driver);
                 Sleep(3000);
@@ -148,16 +148,18 @@ public class DataConsole
         }
     }
 
-    public static void ClickDataSet(IWebDriver driver)
+    public bool ClickDataSet(IWebDriver driver)
     {
         try
         {
             var dataSetLink = driver.FindElement(By.LinkText("Datasets"));
             dataSetLink.Click();
+            return true;
         }
         catch (Exception ex)
         {
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+            return false;
         }
     }
 
@@ -179,20 +181,24 @@ public class DataConsole
     }
 
     #region Sector Creation
-    public static void ClickSector(IWebDriver driver)
+   
+    public bool ClickSector(IWebDriver driver)
     {
         try
         {
             var dataSetLinkSec = driver.FindElement(By.LinkText("Sectors"));
 
             dataSetLinkSec.Click();
+
+            return true;
         }
         catch (Exception ex)
         {
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+            return false;
         }
     }
-    public static string CreateNewDataSectorSuccess(IWebDriver driver)
+    public string CreateNewDataSectorSuccess(IWebDriver driver)
     {
         try
         {
@@ -255,45 +261,42 @@ public class DataConsole
 
             var reqType = retVals.CheckBoxNumbers.RequestType;
             Sleep(3000);
-			IWebElement btn;
+			 IWebElement btn = null;
 
 			switch (reqType)
             {
                 case (int)RequestType.AuthorizationRequest:
 					btn = driver.FindElement(By.LinkText("Authorize"));
-                    btn.Click();
 					break;
                 case (int)RequestType.UnAuthorization:
 					btn = driver.FindElement(By.LinkText("Unauthorize"));
-					btn.Click();
 					break;
                 case (int)RequestType.ArchiveRequest:
 					btn = driver.FindElement(By.LinkText("Archive"));
-					btn.Click();
 					break;
                 case (int)RequestType.UnarchiveRequest:
 					btn = driver.FindElement(By.LinkText("Unarchive"));
-					btn.Click();
 					break;
                 case (int)RequestType.ModificationRequest:
 					btn =driver.FindElement(By.LinkText("Modify"));
-                    btn.Click();
 					break;
                 case (int)RequestType.PublicationRequest:
 					btn = driver.FindElement(By.LinkText("Publish"));
-                    btn.Click();
                     break;
                 case (int)RequestType.UnpublicationRequest:
 					btn = driver.FindElement(By.LinkText("Unpublish"));
-					btn.Click();
 					break;
                 default:
 					btn = driver.FindElement(By.LinkText("Authorize"));
-					btn.Click();
 					break;
             }
 
-            Sleep(7000);
+			if (btn != null)
+			{
+				btn.Click();
+			}
+
+			Sleep(7000);
 			var table = createSec.table;
             var rowCount = 0;
 			if (table != null)

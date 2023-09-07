@@ -5,7 +5,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace RunUnitTest;
 
-public class HighTest : IDisposable
+public class LoginTest : IDisposable
 {
     private readonly IWebDriver driver;
 
@@ -14,7 +14,7 @@ public class HighTest : IDisposable
     private static readonly string _URL = "http://197.255.51.104:9035";
 
 
-    public HighTest()
+    public LoginTest()
     {
         driver = new ChromeDriver();
         loginObj = new LoginMain();
@@ -39,7 +39,6 @@ public class HighTest : IDisposable
 
     public void Dispose()
     {
-        // Dispose of the driver after each test.
         driver.Quit();
         driver.Dispose();
     }

@@ -15,37 +15,37 @@ public class CreateDataSector
     }
 
 
-    public IWebElement txtName => _webDriver.FindElement(By.Id("Name"));
-    public IWebElement txtTitle => _webDriver.FindElement(By.Id("Title"));
-    public IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
-    public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
-    public IWebElement textMsgRes => _webDriver.FindElement(By.CssSelector("p[style='display: block;']"));
-    public IWebElement btnClickNew => _webDriver.FindElement(By.CssSelector("a.item-button[data-modal='']"));
-    public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
+    public virtual IWebElement txtName => _webDriver.FindElement(By.Id("Name"));
+    public virtual IWebElement txtTitle => _webDriver.FindElement(By.Id("Title"));
+    public virtual IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
+    public virtual IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
+    public virtual IWebElement textMsgRes => _webDriver.FindElement(By.CssSelector("p[style='display: block;']"));
+    public virtual IWebElement btnClickNew => _webDriver.FindElement(By.CssSelector("a.item-button[data-modal='']"));
+    public virtual IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
 
 
-    public void EnterNameAndTitle(string userName, string password)
+    public virtual void EnterNameAndTitle(string userName, string password)
     {
         txtName.SendKeys(userName);
         txtTitle.SendKeys(password);
     }
 
-    public void ClickSubmit()
+    public virtual void ClickSubmit()
     {
         btnSubmit.Clicks();
     }
 
-    public void ClickClose()
+    public virtual void ClickClose()
     {
         btnClose.Clicks();
     }
 
-    public void ClickNew()
+    public virtual void ClickNew()
     {
         btnClickNew.Clicks();
     }
 
-    public void ClickOk()
+    public virtual void ClickOk()
     {
         btnClickOk.Clicks();
     }

@@ -42,7 +42,7 @@ public class CMSUIConsole
 				ProcessTimePeriodSelector(driver); 
 				#endregion
 
-				//FlashCard
+				//Flash Card
 				#region FlashCard Operations
 				ClickCMS(driver);
 				Sleep(3000);
@@ -76,8 +76,6 @@ public class CMSUIConsole
 				ProcessTimePeriodFContentSelector(driver);
 				#endregion
 
-
-
 				//Quick Flashes
 				#region Quick Flashes Operations
 
@@ -97,6 +95,8 @@ public class CMSUIConsole
 
 				#endregion
 			}
+		
+		
 		}
 
 	}

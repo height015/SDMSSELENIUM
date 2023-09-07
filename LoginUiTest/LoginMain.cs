@@ -58,7 +58,8 @@ public class LoginMain
     {
         try
         {
-            JsonFileReader jsonFileReader = new();
+			JsonFileReader jsonFileReader = new();
+
             var loginVal = jsonFileReader.ReadJsonFileWrongLoginCredential();
             string loginUrl = _URL + "/account/sign-in";
             driver.Navigate().GoToUrl(loginUrl);

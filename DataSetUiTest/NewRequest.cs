@@ -23,22 +23,22 @@ public class NewRequest
     public IWebElement btnSubmit => _webDriver.FindElement(By.Id("btnSave"));
 
 
-    public IWebElement table => _webDriver.FindElement(By.ClassName("table")) ?? null;
+    public virtual IWebElement table => _webDriver.FindElement(By.ClassName("table")) ?? null;
 
     // Get all the rows in the table
-    public List<IWebElement> rows => table.FindElements(By.TagName("tr")).ToList();
+    public virtual List<IWebElement> rows => table.FindElements(By.TagName("tr")).ToList() ?? null;
 
 
-    public IWebElement btnProcessSelected => _webDriver.FindElement(By.Id("btnReqSelect"));
+    public virtual IWebElement btnProcessSelected => _webDriver.FindElement(By.Id("btnReqSelect"));
 
 
-    public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector(".sa-confirm-button-container .confirm"));
+    public virtual IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector(".sa-confirm-button-container .confirm"));
 
 
-    public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
+    public virtual IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
 
 
-    public void EnterRequestInfo(string title, string reason)
+    public virtual void EnterRequestInfo(string title, string reason)
     {
         txtTitle.SendKeys(title);
         txtReson.SendKeys(reason);

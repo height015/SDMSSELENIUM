@@ -43,19 +43,25 @@ public class JsonFileReader
     {
         try
         {
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-            string fileName = Path.Combine(baseDirectory, "TestData.json");
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
 
-            //string fileName = "TestData.json";
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
 
-            var jsonContent = File.ReadAllText(fileName);
+				LoginFailedParameter retVal = JsonConvert.DeserializeObject<LoginFailedParameter>(jsonContent);
 
-            LoginFailedParameter retVal = JsonConvert.DeserializeObject<LoginFailedParameter>(jsonContent);
+				return retVal;
+			}
 
-            return retVal;
+            return new LoginFailedParameter();
 
-        }
+
+		}
         catch (Exception ex)
         {
             var message = ex.Message;
@@ -88,7 +94,7 @@ public class JsonFileReader
     #endregion
 
 
-    public DataSector ReadJsonFileCreateSector()
+    public virtual DataSector ReadJsonFileCreateSector()
     {
         try
         {
@@ -148,7 +154,7 @@ public class JsonFileReader
         }
     }
 
-    public CheckBoxCount ReadJsonFileSelectCheckBoxes()
+    public virtual CheckBoxCount ReadJsonFileSelectCheckBoxes()
     {
         try
         {
@@ -208,7 +214,6 @@ public class JsonFileReader
         }
     }
 
-
 	public CatRequest ReadJsonFileForSelectCheckBoxesProcessCatNewRequest()
 	{
 		try
@@ -238,7 +243,6 @@ public class JsonFileReader
 			return new CatRequest();
 		}
 	}
-
 
 	public CatalogueContainer ReadJsonFileForSelectOptionCatalogSelector()
     {
@@ -299,7 +303,6 @@ public class JsonFileReader
             return new DataCategoryContainer();
         }
     }
-
     public TableDataSelectorContainer ReadJsonFileForTableDataSector()
     {
         try
@@ -328,7 +331,6 @@ public class JsonFileReader
             return new TableDataSelectorContainer();
         }
     }
-
 
     public TableFrequencyContainer ReadJsonFileForTableFrequency()
     {
