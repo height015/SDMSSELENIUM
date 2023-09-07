@@ -750,6 +750,81 @@ public class JsonFileReader
 	}
 
 
+	public FlashCardDataSectorContainer ReadJsonCMSFlashCard()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				FlashCardDataSectorContainer retVal = JsonConvert.DeserializeObject<FlashCardDataSectorContainer>(jsonContent);
+				return retVal;
+			}
+			return new FlashCardDataSectorContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+			return new FlashCardDataSectorContainer();
+		}
+
+	}
+
+	public FeaturedContentDataSectorContainer ReadJsonCMSFeaturedContent()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				FeaturedContentDataSectorContainer retVal = JsonConvert.DeserializeObject<FeaturedContentDataSectorContainer>(jsonContent);
+				return retVal;
+			}
+			return new FeaturedContentDataSectorContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+			return new FeaturedContentDataSectorContainer();
+		}
+
+	}
+
+	public QFlashDataSectorContainer ReadJsonCMSQFlash()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				QFlashDataSectorContainer retVal = JsonConvert.DeserializeObject<QFlashDataSectorContainer>(jsonContent);
+				return retVal;
+			}
+			return new QFlashDataSectorContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+			return new QFlashDataSectorContainer();
+		}
+
+	}
+
 }
 
 
@@ -1195,5 +1270,103 @@ public class AnalyticsDataSector
 public class AnalyticsDataSectorContainer
 {
     public AnalyticsDataSector AnalyticsDataSector { get; set; }
-} 
+}
+#endregion
+
+
+#region FlashCard
+public class FlashCardDataSector
+{
+    public int SectorIndex { get; set; }
+    public int CategoryIndex { get; set; }
+    public int TableIndex { get; set; }
+    public string StartDate { get; set; }
+    public string StopDate { get; set; }
+    public string IndicatorsIndexToSelect { get; set; }
+
+
+    public string Name { get; set; }
+    public string Title { get; set; }
+    public string SeriesTitle { get; set; }
+
+    public int ChartTypeIndex { get; set; }
+    public int ContentSpotIndex { get; set; }
+
+    public string Note { get; set; }
+
+    public int[] GetIndexArray()
+    {
+        return IndicatorsIndexToSelect?.Split(',').Select(int.Parse).ToArray() ?? new int[0];
+    }
+
+}
+public class FlashCardDataSectorContainer
+{
+    public FlashCardDataSector FlashCardDataSector { get; set; }
+}
+#endregion
+
+
+#region FeatureContent 
+public class FeaturedContentDataSector
+{
+	public int SectorIndex { get; set; }
+	public int CategoryIndex { get; set; }
+	public int TableIndex { get; set; }
+	public string StartDate { get; set; }
+	public string StopDate { get; set; }
+	public string IndicatorsIndexToSelect { get; set; }
+
+
+	public string Name { get; set; }
+	public string Title { get; set; }
+	public string SeriesTitle { get; set; }
+
+	public int ChartTypeIndex { get; set; }
+	public int ContentSpotIndex { get; set; }
+
+	public string Note { get; set; }
+
+	public int[] GetIndexArray()
+	{
+		return IndicatorsIndexToSelect?.Split(',').Select(int.Parse).ToArray() ?? new int[0];
+	}
+
+}
+public class FeaturedContentDataSectorContainer
+{
+	public FeaturedContentDataSector FeaturedContentDataSector { get; set; }
+}
+#endregion
+
+#region QFlash 
+public class QFlashDataSector
+{
+	public int SectorIndex { get; set; }
+	public int CategoryIndex { get; set; }
+	public int TableIndex { get; set; }
+	public string StartDate { get; set; }
+	public string StopDate { get; set; }
+	public string IndicatorsIndexToSelect { get; set; }
+
+
+	public string Name { get; set; }
+	public string Title { get; set; }
+	public string SeriesTitle { get; set; }
+
+	public int ChartTypeIndex { get; set; }
+	public int ContentSpotIndex { get; set; }
+
+	public string Note { get; set; }
+
+	public int[] GetIndexArray()
+	{
+		return IndicatorsIndexToSelect?.Split(',').Select(int.Parse).ToArray() ?? new int[0];
+	}
+
+}
+public class QFlashDataSectorContainer
+{
+	public QFlashDataSector QFlashDataSector { get; set; }
+}
 #endregion

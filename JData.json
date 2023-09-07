@@ -228,7 +228,64 @@
         "ContentSpotIndex": "1",
         "Note": "Selenium Test"
 
-    }
+    },
 
+    ////CMS Analytics  Note the IndicatorsIndexToSelect string will be process as an array seperated by ","
+    //And must not be more than 3
+
+    "FlashCardDataSector": {
+        "SectorIndex": "1",
+        "CategoryIndex": "1",
+        "TableIndex": "1",
+        "IndicatorsIndexToSelect": "1",
+        "StartDate": "2021",
+        "StopDate": "2023",
+        "Name": "Selenium Flash Name",
+        "Title": "Selenium Flash Title",
+        "SeriesTitle": "Selenium Flash Series",
+        "ChartTypeIndex": "1",
+        "ContentSpotIndex": "1",
+        "Note": "Selenium Flash Test"
+
+    },
+
+
+    ////CMS Analytics  Note the IndicatorsIndexToSelect string will be process as an array seperated by ","
+    //And must not be more than 3
+
+    "FeaturedContentDataSector": {
+        "SectorIndex": "1",
+        "CategoryIndex": "1",
+        "TableIndex": "1",
+        "IndicatorsIndexToSelect": "1",
+        "StartDate": "2021",
+        "StopDate": "2023",
+        "Name": "Selenium Featured Content Name",
+        "Title": "Selenium Featured Content Title",
+        "SeriesTitle": "Selenium Featured Content Series",
+        "ChartTypeIndex": "1",
+        "ContentSpotIndex": "1",
+        "Note": "Selenium Featured Content Test"
+    },
+
+
+
+    ////CMS Analytics  Note the IndicatorsIndexToSelect string will be process as an array seperated by ","
+    //And must not be more than 3
+
+    "QFlashDataSector": {
+        "SectorIndex": "1",
+        "CategoryIndex": "1",
+        "TableIndex": "1",
+        "IndicatorsIndexToSelect": "1",
+        "StartDate": "2021",
+        "StopDate": "2023",
+        "Name": "Selenium Featured Content Name",
+        "Title": "Selenium Featured Content Title",
+        "SeriesTitle": "Selenium Featured Content Series",
+        "ChartTypeIndex": "1",
+        "ContentSpotIndex": "1",
+        "Note": "Selenium Featured Content Test"
+    }
 
 }

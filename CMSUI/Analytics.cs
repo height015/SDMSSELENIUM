@@ -37,8 +37,6 @@ public class Analytics
 	public IWebElement contentPopUp => _webDriver.FindElement(By.CssSelector("a[href='/shop/analytics/manage'][data-modal].item-button"));
 
 
-
-
 	public IWebElement txtBoxName => _webDriver.FindElement(By.Id("Name"));
 	public IWebElement txtBoxTitle => _webDriver.FindElement(By.Id("Title"));
 	public IWebElement txtBoxSeries => _webDriver.FindElement(By.Id("SeriesTitle"));
@@ -51,7 +49,10 @@ public class Analytics
 
 	public IWebElement btnSaves => _webDriver.FindElement(By.Id("btnSaveAContent"));
 
-	
+	public IWebElement container => _webDriver.FindElement(By.ClassName("sa-confirm-button-container"));
+	public IWebElement btnYes => container.FindElement(By.CssSelector("button.confirm"));
+
+
 	public IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
 
 	public IWebElement btnSave => _webDriver.FindElement(By.Id("btnSave"));
@@ -88,6 +89,12 @@ public class Analytics
 		contentPopUp.Clicks();
 	}
 
+	public void ClickYesPopUp()
+	{
+		btnYes.Clicks();
+	}
+
+	
 	public void ClickOk()
 	{
 		btnClickOk.Clicks();
