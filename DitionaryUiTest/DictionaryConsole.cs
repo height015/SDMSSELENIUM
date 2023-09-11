@@ -452,8 +452,6 @@ public class DictionaryConsole
 
     #endregion
 
-
-
     #region Data Source
     public static void ClickDataSource(IWebDriver driver)
     {
@@ -517,8 +515,9 @@ public class DictionaryConsole
 
     #endregion
     
-    
-    
+
+
+
     private static void Sleep(int timeVal)
     {
         Thread.Sleep(timeVal);

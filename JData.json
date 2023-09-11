@@ -76,13 +76,9 @@
     //125"
     //182"
 
-
-
     "CatalogueSelectorValue": {
         "value": "182"
     },
-
-
 
     //Tables
     //This are put the index you want selected options this
@@ -94,6 +90,7 @@
 
     //For Table Freq
     //Input the index here
+
     "TableFrequency": {
         "OptionToSelect": "1"
     },
@@ -136,7 +133,6 @@
         "Name": "New Category Selenium",
         "ShortName": "New Category Selenium Title"
     },
-
 
     //Units
     "DataUnit": {
@@ -286,6 +282,46 @@
         "ChartTypeIndex": "1",
         "ContentSpotIndex": "1",
         "Note": "Selenium Featured Content Test"
+    },
+    
+    "BulkTableNewDataCon": {
+        "ApplyAll": "False",
+        "BulkTableNewData": [
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "1"
+            },
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "2"
+            },
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "3"
+            },
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "4"
+            },
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "5"
+            },
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "1"
+            },
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "2"
+            },
+            {
+                "FreqIndexToSelect": "6",
+                "UnitIndexToSelect": "5"
+            }
+        ]
     }
+  }
 
-}
+
+    

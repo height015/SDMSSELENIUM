@@ -20,5 +20,10 @@ public static class MethodsExtentions
     {
         new SelectElement(element).SelectByValue(value);
     }
+
+	public static void SelectDropDownIndex(this IWebElement element, int value)
+	{
+		new SelectElement(element).SelectByIndex(value);
+	}
 }
 

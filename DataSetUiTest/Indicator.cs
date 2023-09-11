@@ -30,6 +30,14 @@ public class Indicator
     public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
     public IWebElement btnSave => _webDriver.FindElement(By.Id("btnSave"));
 
+	public virtual IWebElement btnBrowseFile => _webDriver.FindElement(By.Id("fileUpload"));
+	public virtual IWebElement btnUpload => _webDriver.FindElement(By.Id("btn_upload"));
+	public IWebElement btnUpdate => _webDriver.FindElement(By.Id("btnUpdateLine"));
+	public virtual IWebElement table => _webDriver.FindElement(By.ClassName("table")) ?? null;
+
+	// Get all the rows in the table
+	public virtual List<IWebElement> rows => table.FindElements(By.TagName("tr")).ToList();
+	public virtual IWebElement btnApply => _webDriver.FindElement(By.PartialLinkText("Apply")) ?? null;
 
 	public IWebElement txtTitle => _webDriver.FindElement(By.Id("txtTitle"));
 	public IWebElement txtReason => _webDriver.FindElement(By.Id("txtReason"));

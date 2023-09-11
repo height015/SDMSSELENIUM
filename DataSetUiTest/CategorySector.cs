@@ -26,8 +26,8 @@ public class CategorySector
 
 
 
-    public IWebElement txtBoxName => _webDriver.FindElement(By.Id("Name"));
-    public IWebElement txtBoxTitle => _webDriver.FindElement(By.Id("Title"));
+    public virtual IWebElement txtBoxName => _webDriver.FindElement(By.Id("Name"));
+    public virtual  IWebElement txtBoxTitle => _webDriver.FindElement(By.Id("Title"));
 
     public IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
 
@@ -36,10 +36,10 @@ public class CategorySector
     public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
 
 
-    public void EnterDataCategory(string title, string reason)
+    public virtual void EnterDataCategory(string title, string reason)
     {
-        txtBoxName.SendKeys(title);
-        txtBoxTitle.SendKeys(reason);
+        txtBoxName?.SendKeys(title);
+        txtBoxTitle?.SendKeys(reason);
     }
 
     public void ClickCatalogCard()
@@ -52,7 +52,7 @@ public class CategorySector
         btnContinue.Clicks();
     }
 
-    public void ClickSubmit()
+    public virtual void ClickSubmit()
     {
         btnSubmit.Clicks();
     }

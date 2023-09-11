@@ -13,7 +13,7 @@ using Xunit;
 
 namespace RunUnitTest;
 
-public class DataSetTest : IDisposable
+public class DictionaryTest : IDisposable
 {
     private readonly IWebDriver driver;
 
@@ -24,7 +24,7 @@ public class DataSetTest : IDisposable
 	private static readonly string _URL = "http://197.255.51.104:9035";
 
 
-    public DataSetTest()
+    public DictionaryTest()
     {
         driver = new ChromeDriver();
         loginObj = new LoginMain();

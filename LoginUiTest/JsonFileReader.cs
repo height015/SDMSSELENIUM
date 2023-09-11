@@ -93,7 +93,6 @@ public class JsonFileReader
 
     #endregion
 
-
     public virtual DataSector ReadJsonFileCreateSector()
     {
         try
@@ -124,7 +123,7 @@ public class JsonFileReader
         }
     }
 
-    public DataSectorEmpty ReadJsonFileCreateSectorFailed()
+    public virtual DataSectorEmpty ReadJsonFileCreateSectorFailed()
     {
         try
         {
@@ -184,7 +183,7 @@ public class JsonFileReader
         }
     }
 
-    public Request ReadJsonFileForSelectCheckBoxesProcessNewRequest()
+    public virtual Request ReadJsonFileForSelectCheckBoxesProcessNewRequest()
     {
         try
         {
@@ -214,7 +213,7 @@ public class JsonFileReader
         }
     }
 
-	public CatRequest ReadJsonFileForSelectCheckBoxesProcessCatNewRequest()
+	public virtual CatRequest ReadJsonFileForSelectCheckBoxesProcessCatNewRequest()
 	{
 		try
 		{
@@ -244,7 +243,7 @@ public class JsonFileReader
 		}
 	}
 
-	public CatalogueContainer ReadJsonFileForSelectOptionCatalogSelector()
+	public virtual CatalogueContainer ReadJsonFileForSelectOptionCatalogSelector()
     {
         try
         {
@@ -274,7 +273,7 @@ public class JsonFileReader
         }
     }
 
-    public DataCategoryContainer ReadJsonFileForEnterNewDataCategory()
+    public virtual DataCategoryContainer ReadJsonFileForEnterNewDataCategory()
     {
         try
         {
@@ -827,6 +826,32 @@ public class JsonFileReader
 
 	}
 
+
+	public BulkTableNewDataContainer ReadJsonBulkTabe()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				var retVal = JsonConvert.DeserializeObject<BulkTableNewDataContainer>(jsonContent);
+				return retVal;
+			}
+			return new BulkTableNewDataContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+			return new BulkTableNewDataContainer();
+		}
+
+	}
+
 }
 
 
@@ -1035,7 +1060,6 @@ public class TableRequestData
 	public string Title { get; set; }
 	public string Reason { get; set; }
 
-
 }
 public class TableRequestDataContainer
 {
@@ -1073,10 +1097,9 @@ public class DataTableSetting
 
 public class DataTableSettingContainer
 {
-    public DataTableSetting DataTableSetting { get; set; }
+   public DataTableSetting DataTableSetting { get; set; }
 
 }
-
 
 public class DataTableTxtVal
 {
@@ -1090,8 +1113,57 @@ public class DataTableTxtVal
 
 public class DataTableTxtValContainer
 {
-    public DataTableTxtVal DataTableTxtVal { get; set; }
+   public DataTableTxtVal DataTableTxtVal { get; set; }
 }
+
+//public class BulkTableNewData
+//{
+//	public int FreqIndexToSelect { get; set; }
+//	public int UnitIndexToSelect { get; set; }
+
+//}
+
+//public class BulkTableNewDataContainer
+//{
+//    public BulkTableNewData BulkTableNewData { get; set; }
+//}
+
+
+
+//public class BulkTableNewData
+//{
+//	public int FreqIndexToSelect { get; set; }
+//	public int UnitIndexToSelect { get; set; }
+//}
+
+//public class BulkTableNewDataCon
+//{
+//	public string ApplyAll { get; set; }
+//	public List<BulkTableNewData> BulkTableNewData { get; set; }
+//}
+
+
+public class BulkTableNewDataCon
+{
+	public bool ApplyAll { get; set; }
+	public List<BulkTableNewData> BulkTableNewData { get; set; }
+}
+
+public class BulkTableNewData
+{
+	public int FreqIndexToSelect { get; set; }
+	public int UnitIndexToSelect { get; set; }
+}
+
+public class BulkTableNewDataContainer
+{
+	public BulkTableNewDataCon BulkTableNewDataCon { get; set; }
+}
+
+
+
+
+
 #endregion
 
 
@@ -1183,7 +1255,6 @@ public class IndicatorDataSelectorContainer
 #endregion
 
 #region New Data Indicator PopUp
-
 public class NewDataIndicator
 {
     public int TopLevelIndi { get; set; }
@@ -1239,8 +1310,6 @@ public class ReviewSelectionContaner
 
 
 #endregion
-
-
 
 #region    CMS Analytics
 public class AnalyticsDataSector
