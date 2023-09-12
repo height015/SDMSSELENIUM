@@ -42,6 +42,24 @@ public class Indicator
 	public IWebElement txtTitle => _webDriver.FindElement(By.Id("txtTitle"));
 	public IWebElement txtReason => _webDriver.FindElement(By.Id("txtReason"));
 
+	public IWebElement chkBtnDisplayInChart => _webDriver.FindElement(By.Id("ChkGraphTitle"));
+
+	public IWebElement txtDisplayInChart => _webDriver.FindElement(By.Id("GraphTitle"));
+
+
+	public IWebElement btnUpdateModify => _webDriver.FindElement(By.Id("btnSaveLineItem"));
+
+	public IWebElement comboTree => _webDriver.FindElement(By.ClassName("comboTreeDropDownContainer"));
+	public IWebElement liTree => comboTree.FindElement(By.TagName("li"));
+
+	public IWebElement txtTopLevelBox => _webDriver.FindElement(By.Id("topLevelInd")) ?? null;
+
+	public IList<IWebElement> boxSel => _webDriver.FindElements(By.CssSelector("span.comboTreeItemTitle.selectable"));
+
+
+
+	// driver.FindElement(By.Id("topLevelInd"));
+
 	public void EnterRequestInfo(string title, string reason)
 	{
 		txtTitle.SendKeys(title);

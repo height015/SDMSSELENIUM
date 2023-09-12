@@ -283,7 +283,7 @@
         "ContentSpotIndex": "1",
         "Note": "Selenium Featured Content Test"
     },
-    
+
     "BulkTableNewDataCon": {
         "ApplyAll": "False",
         "BulkTableNewData": [
@@ -320,8 +320,53 @@
                 "UnitIndexToSelect": "5"
             }
         ]
+    },
+
+
+
+    "BulkIndicatorNewDataCon": {
+        "Modify": "False",
+        "indexToSelect": "1",
+        "BulkIndicatorNewData": [
+            {
+                "DisplayOrder": "1",
+                "DisplayInChart": "False",
+                "GraphTitle": "Selenium Test Title"
+            },
+            {
+                "DisplayOrder": "2",
+                "DisplayInChart": "False",
+                "GraphTitle": "Selenium Title 2"
+            },
+            {
+                "DisplayOrder": "3",
+                "DisplayInChart": "False",
+                "GraphTitle": "Selenium Title 3"
+            },
+            {
+                "DisplayOrder": "4",
+                "DisplayInChart": "False",
+                "GraphTitle": "Selenium Title 4"
+            },
+            {
+                "DisplayOrder": "5",
+                "DisplayInChart": "False",
+                "GraphTitle": "Selenium Title 5"
+            },
+            {
+                "DisplayOrder": "6",
+                "DisplayInChart": "False",
+                "GraphTitle": "Selenium Title 6"
+            },
+
+            {
+                "DisplayOrder": "7",
+                "DisplayInChart": "False",
+                "GraphTitle": "Selenium Title 7"
+            }
+        ]
     }
-  }
+}
 
 
     

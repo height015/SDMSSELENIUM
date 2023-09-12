@@ -66,70 +66,74 @@ public class DataConsole
 
             if (login)
             {
-    //            Sleep(3000);
-				//data.ClickDataSet(driver);
-    //            Sleep(3000);
-				//data.ClickSector(driver);
-    //            Sleep(3000);
-				//data.CreateNewDataSectorSuccess(driver);
+                //            Sleep(3000);
+                //data.ClickDataSet(driver);
+                //            Sleep(3000);
+                //data.ClickSector(driver);
+                //            Sleep(3000);
+                //data.CreateNewDataSectorSuccess(driver);
 
-    //            ClickNewRequest(driver);
-    //            Sleep(2000);
-    //            ClickRequestType(driver);
-    //            Sleep(3000);
-    //            data.RequestInfBox(driver);
-    //            Sleep(3000);
+                //            ClickNewRequest(driver);
+                //            Sleep(2000);
+                //            ClickRequestType(driver);
+                //            Sleep(3000);
+                //            data.RequestInfBox(driver);
+                //            Sleep(3000);
 
-				//Category
-				//data.ClickDataSet(driver);
-    //            Sleep(3000);
-    //            ClickCategoryCard(driver);
-    //            Sleep(3000);
-    //            ClickNewRequest(driver);
-    //            Sleep(3000);
-    //            ClickRequestType(driver);
-    //            Sleep(3000);
-    //            data.CategoryRequestInfBox(driver);
-    //            Sleep(3000);
+                //Category
+                //data.ClickDataSet(driver);
+                //            Sleep(3000);
+                //            ClickCategoryCard(driver);
+                //            Sleep(3000);
+                //            ClickNewRequest(driver);
+                //            Sleep(3000);
+                //            ClickRequestType(driver);
+                //            Sleep(3000);
+                //            data.CategoryRequestInfBox(driver);
+                //            Sleep(3000);
 
 
                 //Tables
-				data.ClickDataSet(driver);
+                //data.ClickDataSet(driver);
+                //            Sleep(3000);
+                //            ClickTableCard(driver);
+                //            Sleep(3000);
+                //            TableCatalogueSelectorPopUp(driver);
+                //            Sleep(3000);
+                //ClickTableBulk(driver);
+                //Sleep(3000);
+                //TableUploadBulkFile(driver);
+
+
+                //TableCreateNewPopUp(driver);
+                //Sleep(3000);
+                //ClickNewRequest(driver);
+                //Sleep(3000);
+                //ClickRequestType(driver);
+                //Sleep(3000);
+                //TableCreateNewReqPopUp(driver);
+
+
+
+
+                //Indicator
+                data.ClickDataSet(driver);
                 Sleep(3000);
-                ClickTableCard(driver);
+                ClickIndicators(driver);
                 Sleep(3000);
-                TableCatalogueSelectorPopUp(driver);
+                IndicatorCataloguePopUp(driver);
                 Sleep(3000);
-				ClickTableBulk(driver);
-				Sleep(3000);
-				TableUploadBulkFile(driver);
+                //CreateNewDataIndicatorPopUp(driver);
+                //Sleep(3000);
+                //ClickNewRequest(driver);
+                //Sleep(3000);
+                //ClickRequestType(driver);
+                //Sleep(3000);
+                //CreateNewReqIndicatorPopUp(driver);
 
+                ClickIndicatorBulk(driver);
+                IndicatorUploadBulkFile(driver);
 
-				//TableCreateNewPopUp(driver);
-				//Sleep(3000);
-				//ClickNewRequest(driver);
-				//Sleep(3000);
-				//ClickRequestType(driver);
-				//Sleep(3000);
-				//TableCreateNewReqPopUp(driver);
-
-
-
-
-				//Indicator
-				//data.ClickDataSet(driver);
-				//            Sleep(3000);
-				//            ClickIndicators(driver);
-				//            Sleep(3000);
-				//            IndicatorCataloguePopUp(driver);
-				//            Sleep(3000);
-				//            //CreateNewDataIndicatorPopUp(driver);
-				//            //Sleep(3000);
-				//ClickNewRequest(driver);
-				//            Sleep(3000);
-				//ClickRequestType(driver);
-				//            Sleep(3000);
-				//CreateNewReqIndicatorPopUp(driver);
 
 			}
 		}
@@ -1280,14 +1284,15 @@ public class DataConsole
 
 	public static void IndicatorUploadBulkFile(IWebDriver driver)
 	{
+		var indi = new Indicator(driver);
+
 		try
 		{
-			var indi = new Indicator(driver);
 			JsonFileReader jsonFileReader = new();
 
 			string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-			string fileName = "Table_Template.xlsx";
+			string fileName = "Indicator_Today.xlsx";
 
 			string filePath = Path.Combine(desktopPath, fileName);
 
@@ -1304,73 +1309,84 @@ public class DataConsole
 
 			Sleep(3000);
 
-			var retVal = jsonFileReader.ReadJsonBulkTabe();
-			bool applyAll = retVal.BulkTableNewDataCon.ApplyAll;
+			var retVal = jsonFileReader.ReadJsonBulkIndicator();
+			bool modify = retVal.BulkIndicatorNewDataCon.Modify;
 
 
-			var bulkTableNewDataList = retVal.BulkTableNewDataCon.BulkTableNewData;
+			var bulkTableNewDataList = retVal.BulkIndicatorNewDataCon.BulkIndicatorNewData;
 
 			var tableRes = indi.table;
 			var rowCount = 0;
-			if (tableRes != null && applyAll == false)
-			{
-				var rows = indi.rows;
-				rowCount = rows.Count();
-
-				for (int item = 1; item < rowCount; item++)
+            if (modify)
+            {
+				if (tableRes != null)
 				{
+					var rows = indi.rows;
+					rowCount = rows.Count();
 
-					IWebElement updateLink = indi.rows[item].FindElement(By.LinkText("Modify"));
+					for (int item = 1; item < rowCount; item++)
+					{
 
-					updateLink.Click();
-					Sleep(3000);
+						IWebElement updateLink = indi.rows[item].FindElement(By.LinkText("Modify"));
 
-					//indi.dropDownFeq.SelectDropDownIndex(bulkTableNewDataList[item].FreqIndexToSelect);
-					//indi.dropDownUnit.SelectDropDownIndex(bulkTableNewDataList[item].UnitIndexToSelect);
+						updateLink.Click();
+						Sleep(3000);
 
-					//indi.ClickUpdate();
+                        indi.displayOrder.SendKeys(bulkTableNewDataList[item].DisplayOrder.ToString());
 
-					Sleep(2000);
+						if (bulkTableNewDataList[item].DisplayInChart == true)
+						{
 
-					indi.ClickOk();
+							Sleep(3000);
+							var switBox = indi.DisplayInChart;
+							((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", switBox);
+							((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", switBox);
+
+                            Sleep(2000);
+
+							indi.txtGrapTit.SendKeys(bulkTableNewDataList[item].GraphTitle);
+
+						}
+
+
+                        Sleep(2000);
+
+						indi.ClickOk();
+
+					}
 
 				}
 
 			}
-
-			else if (applyAll)
-			{
-				IWebElement updateLink = indi.rows[1].FindElement(By.LinkText("Update"));
-				updateLink.Click();
-				Sleep(3000);
-				//indi.dropDownFeq.SelectDropDownIndex(bulkTableNewDataList[1].FreqIndexToSelect);
-				//indi.dropDownUnit.SelectDropDownIndex(bulkTableNewDataList[1].UnitIndexToSelect);
-
-				//indi.ClickUpdate();
-
-				Sleep(2000);
-
-				indi.ClickOk();
-
-				var applyBtn = indi.btnApply;
-				Sleep(3000);
-				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", applyBtn);
-				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", applyBtn);
-				Sleep(3000);
-				indi.ClickOk();
-
+            if (indi.txtTopLevelBox != null)
+            {
+                indi.txtTopLevelBox.Click();
+				int indexToSelect = retVal.BulkIndicatorNewDataCon.indexToSelect;
+                Sleep(3000);
+				indi.boxSel[indexToSelect].Click(); 
+  
 			}
+
 			Sleep(3000);
-			((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", indi.btnSave);
-			indi.ClickSave();
-			Sleep(3000);
+			
 
 		}
 		catch (Exception ex)
 		{
 			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
 		}
+        finally{
+			Sleep(3000);
+			indi.btnSave.Click();
+            Sleep(3000);
+			indi.btnClickOk.Click();
+			Sleep(9000);
+
+		}
 	}
+
+
+
 
 	#endregion
 

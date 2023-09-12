@@ -852,6 +852,33 @@ public class JsonFileReader
 
 	}
 
+
+
+    public BulkIndicatorNewDataContainer ReadJsonBulkIndicator()
+	{
+		try
+		{
+			string currentDirectory = Directory.GetCurrentDirectory();
+			DirectoryInfo projectRoot = Directory.GetParent(currentDirectory).Parent.Parent.Parent;
+			string jsonFileName = "JData.json";
+			string jsonFilePath = Path.Combine(projectRoot.FullName, jsonFileName);
+
+			if (File.Exists(jsonFilePath))
+			{
+				var jsonContent = File.ReadAllText(jsonFilePath);
+				var retVal = JsonConvert.DeserializeObject<BulkIndicatorNewDataContainer>(jsonContent);
+				return retVal;
+			}
+			return new BulkIndicatorNewDataContainer();
+		}
+		catch (Exception ex)
+		{
+			var message = ex.Message;
+			return new BulkIndicatorNewDataContainer();
+		}
+
+	}
+
 }
 
 
@@ -1160,12 +1187,7 @@ public class BulkTableNewDataContainer
 	public BulkTableNewDataCon BulkTableNewDataCon { get; set; }
 }
 
-
-
-
-
 #endregion
-
 
 #region  Indicators
 public class IndicatorRequestData
@@ -1177,11 +1199,34 @@ public class IndicatorRequestData
 public class IndicatorRequestDataContainer
 {
     public IndicatorRequestData IndicatorRequestData { get; set; }
-} 
+}
+
+
+
+
+public class BulkIndicatorNewDataCon
+{
+	public bool Modify { get; set; }
+	public int indexToSelect { get; set; }
+	public List<BulkIndicatorNewData> BulkIndicatorNewData { get; set; }
+}
+
+public class BulkIndicatorNewData
+{
+	public int DisplayOrder { get; set; }
+	public bool DisplayInChart { get; set; }
+    public string GraphTitle { get; set; }
+
+}
+
+public class BulkIndicatorNewDataContainer
+{
+	public BulkIndicatorNewDataCon BulkIndicatorNewDataCon { get; set; }
+}
+
 #endregion
 
 //Frequncy
-
 #region Frequency
 public class DataFrequency
 {
