@@ -21,24 +21,40 @@ public class WorkFlowConsole
 			{
 				ClickWorkFlow(driver);
 				Wait(3000);
-				//ClickReviewAuthorization(driver);
-				//Wait(3000);
-				//CreateNewDataIndicatorPopUp(driver);
-				//Wait(3000);
-				//ClickWorkFlow(driver);
-
-				ClickApprovalsAuthorization(driver);
-				ClickIndicatorPopUp(driver);
+				ClickReviewAuthorization(driver);
 				Wait(3000);
-			}
+                CreateNewDataIndicatorPopUp(driver);
+				Wait(3000);
+                ClickClose(driver);
+                //ClickWorkFlow(driver);
+
+                ClickApprovalsAuthorization(driver);
+                Wait(3000);
+                ClickIndicatorPopUp(driver);
+				Wait(3000);
+				ClickClose(driver);
+
+            }
 		}
 
 	}
-	
-	
-	#region Reviews 
 
-	public static void ClickWorkFlow(IWebDriver driver)
+    public static void ClickClose(IWebDriver driver)
+    {
+        try
+        {
+            ///dashboard
+            var closeBtn = driver.FindElement(By.CssSelector("a[href*='/workflow-mgt']"));
+            closeBtn.Click();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+        }
+    }
+    #region Reviews 
+
+    public static void ClickWorkFlow(IWebDriver driver)
 	{
 		try
 		{

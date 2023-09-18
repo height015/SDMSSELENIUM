@@ -22,47 +22,84 @@ public class DataConsole
        
             bool login = loginObj.LoginSuccess(driver);
 
-    //        if (login)
-    //        {
-    //            Sleep(3000);
-				//data.ClickDataSet(driver);
-    //            Sleep(3000);
-				//data.ClickSector(driver);
-    //            Sleep(3000);
+            if (login)
+            {
+                Sleep(3000);
+                data.ClickDataSet(driver);
+                Sleep(3000);
+                data.ClickSector(driver);
+                Sleep(3000);
+                data.CreateNewDataSectorSuccess(driver);
+                Sleep(3000);
+                ClickNewRequest(driver);
+                Sleep(2000);
+                SelectCheckBoxes(driver);
+                Sleep(2000);
+                data.RequestInfBox(driver);
 
-				//data.CreateNewDataSectorSuccess(driver);
-
-    //            ClickNewRequest(driver);
-    //            Sleep(2000);
-    //            SelectCheckBoxes(driver);
-
-    //            Sleep(2000);
-
-    //            data.RequestInfBox(driver);
-    //        }
-
-
-   //         ClickDashBorad(driver);
-   //         Sleep(3000);
-   //         ClickDataCatalogCard(driver);
-   //         Sleep(3000);
-   //         ClickCategoryCard(driver);
-   //         ClickNewDataCategoryButton(driver);
-   //         ClickNewRequest(driver);
-   //         SelectCheckBoxes(driver);
-   //         data.CategoryRequestInfBox(driver);
-   //         ClickDashBorad(driver);
-
-			//data.ClickDataSet(driver);
-   //         ClickTableCard(driver);
-   //         TableCatalogueSelectorPopUp(driver);
-   //         TableCreateNewPopUp(driver);
+                Sleep(3000);
+                ClickDashBorad(driver);
+                Sleep(3000);
+                ClickDataCatalogCard(driver);
+                Sleep(3000);
+                ClickCategoryCard(driver);
+                ClickNewDataCategoryButton(driver);
+                ClickNewRequest(driver);
+                SelectCheckBoxes(driver);
+                data.CategoryRequestInfBox(driver);
+                Sleep(3000);
 
 
-			//data.ClickDataSet(driver);
-   //         ClickIndicators(driver);
-   //         IndicatorCataloguePopUp(driver);
-   //         CreateNewDataIndicatorPopUp(driver);
+                data.ClickDataSet(driver);
+                ClickTableCard(driver);
+                TableCatalogueSelectorPopUp(driver);
+                TableCreateNewPopUp(driver);
+                Sleep(3000);
+                //TableCatalogueSelectorPopUp(driver);
+                //Sleep(3000);
+                ClickTableBulk(driver);
+                Sleep(3000);
+                TableUploadBulkFile(driver);
+                data.ClickDataSet(driver);
+                Sleep(3000);
+
+
+                ClickIndicators(driver);
+                IndicatorCataloguePopUp(driver);
+                CreateNewDataIndicatorPopUp(driver);
+
+
+                //Indicator
+                data.ClickDataSet(driver);
+                Sleep(3000);
+                ClickIndicators(driver);
+                Sleep(3000);
+                IndicatorCataloguePopUp(driver);
+                Sleep(3000);
+                CreateNewDataIndicatorPopUp(driver);
+                Sleep(3000);
+                ClickNewRequest(driver);
+                Sleep(3000);
+                CreateNewReqIndicatorPopUp(driver);
+                Sleep(3000);
+
+                ClickRequestType(driver);
+                Sleep(3000);
+                ClickClose(driver);
+                Sleep(3000);
+                ClickIndicatorBulk(driver);
+                Sleep(3000);
+                IndicatorUploadBulkFile(driver);
+
+
+            }
+
+
+
+
+
+
+
 
             if (login)
             {
@@ -97,12 +134,7 @@ public class DataConsole
                 //data.ClickDataSet(driver);
                 //            Sleep(3000);
                 //            ClickTableCard(driver);
-                //            Sleep(3000);
-                //            TableCatalogueSelectorPopUp(driver);
-                //            Sleep(3000);
-                //ClickTableBulk(driver);
-                //Sleep(3000);
-                //TableUploadBulkFile(driver);
+                
 
 
                 //TableCreateNewPopUp(driver);
@@ -117,28 +149,29 @@ public class DataConsole
 
 
                 //Indicator
-                data.ClickDataSet(driver);
-                Sleep(3000);
-                ClickIndicators(driver);
-                Sleep(3000);
-                IndicatorCataloguePopUp(driver);
-                Sleep(3000);
-                //CreateNewDataIndicatorPopUp(driver);
-                //Sleep(3000);
-                //ClickNewRequest(driver);
-                //Sleep(3000);
-                //ClickRequestType(driver);
-                //Sleep(3000);
-                //CreateNewReqIndicatorPopUp(driver);
 
-                ClickIndicatorBulk(driver);
-                IndicatorUploadBulkFile(driver);
 
 
 			}
 		}
 
 	}
+
+
+
+    public static void ClickClose(IWebDriver driver)
+    {
+        try
+        {
+            var closeBtn = driver.FindElement(By.CssSelector("a[href='/dataset/indicators']"));
+            closeBtn.Click();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
+        }
+    }
+
 
     public static void ClickDashBorad(IWebDriver driver)
     {
@@ -755,8 +788,6 @@ public class DataConsole
 
 			table.ClickNew();
 
-	
-
 			//The Sleep is Inportant Here so the Pop-Div is loaded to the  DOM
 			Sleep(4000);
 
@@ -997,7 +1028,6 @@ public class DataConsole
 		}
 	}
 
-
 	public static void TableUploadBulkFile(IWebDriver driver)
 	{
 		try
@@ -1053,11 +1083,8 @@ public class DataConsole
 					Sleep(2000);
 
 					table.ClickOk();
-
 				}
-
 			}
-
             else if (applyAll)
             {
 				IWebElement updateLink = table.rows[1].FindElement(By.LinkText("Update"));
@@ -1384,9 +1411,6 @@ public class DataConsole
 
 		}
 	}
-
-
-
 
 	#endregion
 

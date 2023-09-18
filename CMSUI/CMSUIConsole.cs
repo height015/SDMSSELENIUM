@@ -4,7 +4,6 @@ using LoginUiTest;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class CMSUIConsole
 {
@@ -78,7 +77,6 @@ public class CMSUIConsole
 
 				//Quick Flashes
 				#region Quick Flashes Operations
-
 				ClickCMS(driver);
 				Sleep(3000);
 				ClickQuickFlashCard(driver);

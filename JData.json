@@ -25,8 +25,8 @@
     ////////////////////////////// Data Sector ///////////////////////////
 
     "SectorField": {
-        "Name": "Oil  Selenium 597621",
-        "Title": "Oil Selenium 597621"
+        "Name": "Fat Selenium",
+        "Title": "Fat Selenium"
     },
 
     "SectorFieldEmpty": {
@@ -104,9 +104,9 @@
     },
 
     "TableNewData": {
-        "Name": "Selenium Oil01",
-        "Title": "Selenium Gas01",
-        "Description": "Selenium Acid01"
+        "Name": "Selenium Fat 01",
+        "Title": "Selenium Fas 01",
+        "Description": "Selenium Fat 01"
     },
 
     //This Value is either True or False
@@ -120,31 +120,31 @@
 
     //Data Value for the Enabled TextBoxes
     "DataTableTxtVal": {
-        "Txt1": "Selenium111",
-        "Txt2": "Selenium121",
-        "Txt3": "Selenium131",
-        "Txt4": "Selenium141",
-        "Txt5": "Selenium051"
+        "Txt1": "Selenium Fat",
+        "Txt2": "Selenium Fat",
+        "Txt3": "Selenium Fat",
+        "Txt4": "Selenium Fat",
+        "Txt5": "Selenium Fat"
     },
 
     ///Frequency
 
     "DataFrequency": {
-        "Name": "New Category Selenium",
-        "ShortName": "New Category Selenium Title"
+        "Name": "New Category Selenium Fat",
+        "ShortName": "New Category Selenium Fat Title"
     },
 
     //Units
     "DataUnit": {
-        "Name": "Selenium",
-        "ShortName": "Selenium"
+        "Name": "Selenium Fat",
+        "ShortName": "Selenium Fat"
     },
 
 
     //Data Entities
     "DataEntities": {
-        "Name": "Selenium09",
-        "ShortName": "Selenium09"
+        "Name": "Selenium Fil",
+        "ShortName": "Selenium Fil"
     },
 
     //IndicatorDataSelector
@@ -156,12 +156,12 @@
 
     "NewDataIndicator": {
         "TopLevelIndi": "1",
-        "Name": "Selams",
-        "Title": "Selams",
+        "Name": "Selams Fat",
+        "Title": "Selams Fat",
         "EmboldenIndicatorTitle": "True",
         "DisplayOrder": "3",
         "DisplayInChart": "True",
-        "TitleToDisplay": "Selams Check-Phase"
+        "TitleToDisplay": "Selams Fat Chek"
     },
 
     //Workflow Selection
@@ -180,8 +180,8 @@
     ///DataCategory
 
     "DataCategory": {
-        "Name": "New Category Selenium 33764",
-        "Title": "New Category Selenium 33764"
+        "Name": "New Category Selenium Fatts",
+        "Title": "New Category Selenium Fattss"
     },
 
     //////////// Request Information Input Fields //////////////
@@ -192,18 +192,18 @@
     },
 
     "CatRequestInformation": {
-        "Title": "Selenium Test5 Cat 0082310",
-        "Reason": "Test5 Reason Cat 0602310"
+        "Title": "Selenium Tes Fat ",
+        "Reason": "Test5 Reason Fat "
     },
 
     "TableRequestData": {
-        "Title": "Selenium Test 60",
-        "Reason": "Test Reason 60"
+        "Title": "Selenium Test",
+        "Reason": "Test Reason"
     },
 
     "IndicatorRequestData": {
-        "Title": "Selenium Test 90",
-        "Reason": "Test Reason 90"
+        "Title": "Selenium Test",
+        "Reason": "Test Reason"
     },
 
 
@@ -215,14 +215,14 @@
         "CategoryIndex": "1",
         "TableIndex": "1",
         "IndicatorsIndexToSelect": "1",
-        "StartDate": "2021",
+        "StartDate": "2019",
         "StopDate": "2023",
-        "Name": "Selenium Name",
-        "Title": "Selenium Title",
-        "SeriesTitle": "Selenium Series",
+        "Name": "Selenium Fat",
+        "Title": "Selenium Fix",
+        "SeriesTitle": "Selenium Sum",
         "ChartTypeIndex": "1",
         "ContentSpotIndex": "1",
-        "Note": "Selenium Test"
+        "Note": "Selenium Test Check"
 
     },
 
@@ -234,14 +234,14 @@
         "CategoryIndex": "1",
         "TableIndex": "1",
         "IndicatorsIndexToSelect": "1",
-        "StartDate": "2021",
+        "StartDate": "2019",
         "StopDate": "2023",
-        "Name": "Selenium Flash Name",
-        "Title": "Selenium Flash Title",
-        "SeriesTitle": "Selenium Flash Series",
+        "Name": "Selenium Fat Name",
+        "Title": "Selenium Fat Title",
+        "SeriesTitle": "Selenium Fat Series",
         "ChartTypeIndex": "1",
         "ContentSpotIndex": "1",
-        "Note": "Selenium Flash Test"
+        "Note": "Selenium Fat Test"
 
     },
 
@@ -254,14 +254,14 @@
         "CategoryIndex": "1",
         "TableIndex": "1",
         "IndicatorsIndexToSelect": "1",
-        "StartDate": "2021",
+        "StartDate": "2019",
         "StopDate": "2023",
-        "Name": "Selenium Featured Content Name",
-        "Title": "Selenium Featured Content Title",
-        "SeriesTitle": "Selenium Featured Content Series",
+        "Name": "Selenium Fat Content Name",
+        "Title": "Selenium Fat Content Title",
+        "SeriesTitle": "Selenium Fat Content Series",
         "ChartTypeIndex": "1",
         "ContentSpotIndex": "1",
-        "Note": "Selenium Featured Content Test"
+        "Note": "Selenium Fat Content Test"
     },
 
 
@@ -274,14 +274,14 @@
         "CategoryIndex": "1",
         "TableIndex": "1",
         "IndicatorsIndexToSelect": "1",
-        "StartDate": "2021",
+        "StartDate": "2016",
         "StopDate": "2023",
-        "Name": "Selenium Featured Content Name",
-        "Title": "Selenium Featured Content Title",
-        "SeriesTitle": "Selenium Featured Content Series",
+        "Name": "Selenium Fat Content Name",
+        "Title": "Selenium Fat Content Title",
+        "SeriesTitle": "Selenium Fat Content Series",
         "ChartTypeIndex": "1",
         "ContentSpotIndex": "1",
-        "Note": "Selenium Featured Content Test"
+        "Note": "Selenium Fat Content Test"
     },
 
     "BulkTableNewDataCon": {
@@ -331,38 +331,38 @@
             {
                 "DisplayOrder": "1",
                 "DisplayInChart": "False",
-                "GraphTitle": "Selenium Test Title"
+                "GraphTitle": "Selenium Fat Title"
             },
             {
                 "DisplayOrder": "2",
                 "DisplayInChart": "False",
-                "GraphTitle": "Selenium Title 2"
+                "GraphTitle": "Selenium Fat 2"
             },
             {
                 "DisplayOrder": "3",
                 "DisplayInChart": "False",
-                "GraphTitle": "Selenium Title 3"
+                "GraphTitle": "Selenium Fat 3"
             },
             {
                 "DisplayOrder": "4",
                 "DisplayInChart": "False",
-                "GraphTitle": "Selenium Title 4"
+                "GraphTitle": "Selenium Fat 4"
             },
             {
                 "DisplayOrder": "5",
                 "DisplayInChart": "False",
-                "GraphTitle": "Selenium Title 5"
+                "GraphTitle": "Selenium Fat 5"
             },
             {
                 "DisplayOrder": "6",
                 "DisplayInChart": "False",
-                "GraphTitle": "Selenium Title 6"
+                "GraphTitle": "Selenium Fat 6"
             },
 
             {
                 "DisplayOrder": "7",
                 "DisplayInChart": "False",
-                "GraphTitle": "Selenium Title 7"
+                "GraphTitle": "Selenium Fat 7"
             }
         ]
     }
