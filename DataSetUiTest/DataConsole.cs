@@ -24,30 +24,31 @@ public class DataConsole
 
             if (login)
             {
-                Sleep(3000);
-                data.ClickDataSet(driver);
-                Sleep(3000);
-                data.ClickSector(driver);
-                Sleep(3000);
-                data.CreateNewDataSectorSuccess(driver);
-                Sleep(3000);
-                ClickNewRequest(driver);
-                Sleep(2000);
-                SelectCheckBoxes(driver);
-                Sleep(2000);
-                data.RequestInfBox(driver);
 
-                Sleep(3000);
-                ClickDashBorad(driver);
-                Sleep(3000);
-                ClickDataCatalogCard(driver);
-                Sleep(3000);
-                ClickCategoryCard(driver);
-                ClickNewDataCategoryButton(driver);
-                ClickNewRequest(driver);
-                SelectCheckBoxes(driver);
-                data.CategoryRequestInfBox(driver);
-                Sleep(3000);
+                //Sleep(3000);
+                //data.ClickDataSet(driver);
+                //Sleep(3000);
+                //data.ClickSector(driver);
+                //Sleep(3000);
+                //data.CreateNewDataSectorSuccess(driver);
+                //Sleep(3000);
+                //ClickNewRequest(driver);
+                //Sleep(2000);
+                //SelectCheckBoxes(driver);
+                //Sleep(2000);
+                //data.RequestInfBox(driver);
+
+                //Sleep(3000);
+                //ClickDashBorad(driver);
+                //Sleep(3000);
+                //ClickDataCatalogCard(driver);
+                //Sleep(3000);
+                //ClickCategoryCard(driver);
+                //ClickNewDataCategoryButton(driver);
+                //ClickNewRequest(driver);
+                //SelectCheckBoxes(driver);
+                //data.CategoryRequestInfBox(driver);
+                //Sleep(3000);
 
 
                 data.ClickDataSet(driver);
@@ -55,19 +56,13 @@ public class DataConsole
                 TableCatalogueSelectorPopUp(driver);
                 TableCreateNewPopUp(driver);
                 Sleep(3000);
-                //TableCatalogueSelectorPopUp(driver);
-                //Sleep(3000);
                 ClickTableBulk(driver);
                 Sleep(3000);
                 TableUploadBulkFile(driver);
-                data.ClickDataSet(driver);
                 Sleep(3000);
-
-
-                ClickIndicators(driver);
-                IndicatorCataloguePopUp(driver);
-                CreateNewDataIndicatorPopUp(driver);
-
+                ClickRequestType(driver);
+                Sleep(3000);
+                TableCreateNewReqPopUp(driver);
 
                 //Indicator
                 data.ClickDataSet(driver);
@@ -80,79 +75,20 @@ public class DataConsole
                 Sleep(3000);
                 ClickNewRequest(driver);
                 Sleep(3000);
-                CreateNewReqIndicatorPopUp(driver);
-                Sleep(3000);
-
+              
                 ClickRequestType(driver);
+                Sleep(3000);
+                CreateNewReqIndicatorPopUp(driver);
                 Sleep(3000);
                 ClickClose(driver);
                 Sleep(3000);
                 ClickIndicatorBulk(driver);
                 Sleep(3000);
                 IndicatorUploadBulkFile(driver);
-
-
             }
 
 
-
-
-
-
-
-
-            if (login)
-            {
-                //            Sleep(3000);
-                //data.ClickDataSet(driver);
-                //            Sleep(3000);
-                //data.ClickSector(driver);
-                //            Sleep(3000);
-                //data.CreateNewDataSectorSuccess(driver);
-
-                //            ClickNewRequest(driver);
-                //            Sleep(2000);
-                //            ClickRequestType(driver);
-                //            Sleep(3000);
-                //            data.RequestInfBox(driver);
-                //            Sleep(3000);
-
-                //Category
-                //data.ClickDataSet(driver);
-                //            Sleep(3000);
-                //            ClickCategoryCard(driver);
-                //            Sleep(3000);
-                //            ClickNewRequest(driver);
-                //            Sleep(3000);
-                //            ClickRequestType(driver);
-                //            Sleep(3000);
-                //            data.CategoryRequestInfBox(driver);
-                //            Sleep(3000);
-
-
-                //Tables
-                //data.ClickDataSet(driver);
-                //            Sleep(3000);
-                //            ClickTableCard(driver);
-                
-
-
-                //TableCreateNewPopUp(driver);
-                //Sleep(3000);
-                //ClickNewRequest(driver);
-                //Sleep(3000);
-                //ClickRequestType(driver);
-                //Sleep(3000);
-                //TableCreateNewReqPopUp(driver);
-
-
-
-
-                //Indicator
-
-
-
-			}
+          
 		}
 
 	}
@@ -171,8 +107,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
-
     public static void ClickDashBorad(IWebDriver driver)
     {
         try
@@ -185,7 +119,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
     public bool ClickDataSet(IWebDriver driver)
     {
         try
@@ -346,7 +279,6 @@ public class DataConsole
 
 				foreach (var item in rowIndexes)
                 { 
-                    
                     IWebElement checkbox = createSec.rows[item].FindElement(By.Name("SelItemIds"));
                     checkbox.Click();
                     rowCount--;
@@ -354,7 +286,6 @@ public class DataConsole
 					{
                         break;
 					}
-
 				}
             }
 			Sleep(3000);
@@ -421,20 +352,9 @@ public class DataConsole
 
             //or Use this
 
-            if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript(
-    "var elem = arguments[0],                 " +
-    "  box = elem.getBoundingClientRect(),    " +
-    "  cx = box.left + box.width / 2,         " +
-    "  cy = box.top + box.height / 2,         " +
-    "  e = document.elementFromPoint(cx, cy); " +
-    "for (; e; e = e.parentElement) {         " +
-    "  if (e === elem)                        " +
-    "    return true;                         " +
-    "}                                        " +
-    "return false;                            ", button))
-            {
-                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
-            }
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 0);");
+
 
             Sleep(3000);
 
@@ -492,24 +412,12 @@ public class DataConsole
 			}
 
 
-			//or Use this
+            //or Use this
 
-			if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript(
-	"var elem = arguments[0],                 " +
-	"  box = elem.getBoundingClientRect(),    " +
-	"  cx = box.left + box.width / 2,         " +
-	"  cy = box.top + box.height / 2,         " +
-	"  e = document.elementFromPoint(cx, cy); " +
-	"for (; e; e = e.parentElement) {         " +
-	"  if (e === elem)                        " +
-	"    return true;                         " +
-	"}                                        " +
-	"return false;                            ", button))
-			{
-				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
-			}
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 0);");
 
-			Sleep(3000);
+            Sleep(3000);
 
 			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 			var dataSetLink = wait.Until(d => d.FindElement(By.Id("btnReqSelect")));
@@ -950,7 +858,6 @@ public class DataConsole
             Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
         }
     }
-
 	public static bool TableCreateNewReqPopUp(IWebDriver driver)
 	{
 		try
@@ -965,23 +872,10 @@ public class DataConsole
 			((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].style.display='none';", overlappingDiv);
 			IWebElement button = driver.FindElement(By.Id("btnReqSelect"));
 
-			//or Use this
-			if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript(
-	"var elem = arguments[0],                 " +
-	"  box = elem.getBoundingClientRect(),    " +
-	"  cx = box.left + box.width / 2,         " +
-	"  cy = box.top + box.height / 2,         " +
-	"  e = document.elementFromPoint(cx, cy); " +
-	"for (; e; e = e.parentElement) {         " +
-	"  if (e === elem)                        " +
-	"    return true;                         " +
-	"}                                        " +
-	"return false;                            ", button))
-			{
-				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
-			}
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 0);");
 
-			Sleep(3000);
+            Sleep(3000);
 
 			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 			var dataSetLink = wait.Until(d => d.FindElement(By.Id("btnReqSelect")));
@@ -1011,7 +905,6 @@ public class DataConsole
 			return false;
 		}
 	}
-
 	public static void ClickTableBulk(IWebDriver driver)
 	{
 		try
@@ -1027,7 +920,6 @@ public class DataConsole
 			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
 		}
 	}
-
 	public static void TableUploadBulkFile(IWebDriver driver)
 	{
 		try
@@ -1107,12 +999,18 @@ public class DataConsole
 				table.ClickOk();
 
 			}
-			Sleep(3000);
-			((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", table.btnSave);
+			
+            Sleep(4000);
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 0);");
+
 			table.ClickSave();
 			Sleep(3000);
+            table.btnClickOk.Click();
+            Sleep(3000);
 
-		}
+        }
 		catch (Exception ex)
 		{
 			Console.WriteLine($"{ex.Source} and {ex.InnerException} and {ex.Message}");
@@ -1244,23 +1142,10 @@ public class DataConsole
 			((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].style.display='none';", overlappingDiv);
 			IWebElement button = driver.FindElement(By.Id("btnReqSelect"));
 
-			//or Use this
-			if (!(bool)((IJavaScriptExecutor)driver).ExecuteScript(
-	"var elem = arguments[0],                 " +
-	"  box = elem.getBoundingClientRect(),    " +
-	"  cx = box.left + box.width / 2,         " +
-	"  cy = box.top + box.height / 2,         " +
-	"  e = document.elementFromPoint(cx, cy); " +
-	"for (; e; e = e.parentElement) {         " +
-	"  if (e === elem)                        " +
-	"    return true;                         " +
-	"}                                        " +
-	"return false;                            ", button))
-			{
-				((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
-			}
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 0);");
 
-			Sleep(3000);
+            Sleep(3000);
 
 			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 			var dataSetLink = wait.Until(d => d.FindElement(By.Id("btnReqSelect")));
@@ -1368,11 +1253,8 @@ public class DataConsole
 							var switBox = indi.DisplayInChart;
 							((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", switBox);
 							((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", switBox);
-
                             Sleep(2000);
-
 							indi.txtGrapTit.SendKeys(bulkTableNewDataList[item].GraphTitle);
-
 						}
 
 
@@ -1412,9 +1294,10 @@ public class DataConsole
 		}
 	}
 
-	#endregion
+    #endregion
 
-	private static void Sleep(int time)
+
+    private static void Sleep(int time)
     {
         Thread.Sleep(time);
     }

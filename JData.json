@@ -35,19 +35,18 @@
     },
 
     //This are the RequestType that can be intiated below
-
-    //	AuthorizationRequest = 1,
-    //	UnAuthorization =2,
-    //	ArchiveRequest = 3,
-    //	UnarchiveRequest = 4,
-    //	ModificationRequest = 5,
-    //	PublicationRequest = 6,
-    //	UnpublicationRequest =7
+            //	AuthorizationRequest = 1,
+            //	UnAuthorization =2,
+            //	ArchiveRequest = 3,
+            //	UnarchiveRequest = 4,
+            //	ModificationRequest = 5,
+            //	PublicationRequest = 6,
+            //	UnpublicationRequest =7
 
     //Then Indexes to be Selected
 
     "CheckBoxNumbers": {
-        "Index": "1,2",
+        "Index": "1,2,3",
         "RequestType": "1"
     },
 
@@ -104,9 +103,9 @@
     },
 
     "TableNewData": {
-        "Name": "Selenium Fat 01",
-        "Title": "Selenium Fas 01",
-        "Description": "Selenium Fat 01"
+        "Name": "Selenium Fat 101",
+        "Title": "Selenium Fas 101",
+        "Description": "Selenium Fat 101"
     },
 
     //This Value is either True or False
@@ -120,31 +119,38 @@
 
     //Data Value for the Enabled TextBoxes
     "DataTableTxtVal": {
-        "Txt1": "Selenium Fat",
-        "Txt2": "Selenium Fat",
-        "Txt3": "Selenium Fat",
-        "Txt4": "Selenium Fat",
-        "Txt5": "Selenium Fat"
+        "Txt1": "Selenium Fat101",
+        "Txt2": "Selenium Fat101",
+        "Txt3": "Selenium Fat101",
+        "Txt4": "Selenium Fat101",
+        "Txt5": "Selenium Fat101"
     },
 
     ///Frequency
 
     "DataFrequency": {
-        "Name": "New Category Selenium Fat",
-        "ShortName": "New Category Selenium Fat Title"
+        "Name": "New Selenium Fat02",
+        "ShortName": "New Selenium Fat Tit"
     },
 
     //Units
     "DataUnit": {
-        "Name": "Selenium Fat",
-        "ShortName": "Selenium Fat"
+        "Name": "Selenium volume check",
+        "ShortName": "Selenium store check"
     },
 
 
     //Data Entities
     "DataEntities": {
-        "Name": "Selenium Fil",
-        "ShortName": "Selenium Fil"
+        "Name": "Selenium Fil32",
+        "ShortName": "Selenium Fil3"
+    },
+
+    //Data Sources
+
+    "DataSource": {
+        "Name": "Selenium Source40",
+        "ShortName": "Selenium Sources3"
     },
 
     //IndicatorDataSelector
@@ -202,8 +208,8 @@
     },
 
     "IndicatorRequestData": {
-        "Title": "Selenium Test",
-        "Reason": "Test Reason"
+        "Title": "Selenium View",
+        "Reason": "View Reason"
     },
 
 
@@ -263,8 +269,6 @@
         "ContentSpotIndex": "1",
         "Note": "Selenium Fat Content Test"
     },
-
-
 
     ////CMS Analytics  Note the IndicatorsIndexToSelect string will be process as an array seperated by ","
     //And must not be more than 3

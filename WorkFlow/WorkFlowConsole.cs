@@ -26,15 +26,15 @@ public class WorkFlowConsole
                 CreateNewDataIndicatorPopUp(driver);
 				Wait(3000);
                 ClickClose(driver);
-                //ClickWorkFlow(driver);
-
-                ClickApprovalsAuthorization(driver);
-                Wait(3000);
-                ClickIndicatorPopUp(driver);
+				
+				ClickWorkFlow(driver);
+				ClickApprovalsAuthorization(driver);
+				Wait(3000);
+				ClickIndicatorPopUp(driver);
 				Wait(3000);
 				ClickClose(driver);
 
-            }
+			}
 		}
 
 	}
@@ -111,9 +111,9 @@ public class WorkFlowConsole
 				var rows = auth.rows;
 				var btnRow = retVal.WorkFlowSelection.RoleIndex;
 
-				if (btnRow >= 0 && btnRow < rows.Count)
+				if (btnRow > 0 && btnRow <= rows.Count)
 				{
-					IWebElement desiredRow = rows[btnRow];
+					IWebElement desiredRow = rows[btnRow-1];
 					//IWebElement viewLink = desiredRow.FindElement(By.CssSelector("a[title='View Detail']"));
 					//viewLink.Click();
 
@@ -189,7 +189,7 @@ public class WorkFlowConsole
 				var btnRow = retVal.WorkFlowSelection.RoleIndex;
 				if (btnRow >= 0 && btnRow < rows.Count)
 				{
-					IWebElement desiredRow = rows[btnRow];
+					IWebElement desiredRow = rows[btnRow-1];
 					//IWebElement viewLink = desiredRow.FindElement(By.CssSelector("a[title='View Detail']"));
 					//viewLink.Click();
 

@@ -44,7 +44,6 @@ public class CreateDataSector
     {
         btnClickNew.Clicks();
     }
-
     public virtual void ClickOk()
     {
         btnClickOk.Clicks();

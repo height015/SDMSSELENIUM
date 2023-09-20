@@ -32,18 +32,18 @@ public class LoginMain
             string loginUrl = _URL+"/account/sign-in";
             driver.Navigate().GoToUrl(loginUrl);
 
+            Sleep(3000);
             var loginPage = new LoginPage(driver);
 
             loginPage.EnterUserNameAndPassword(loginVal.LoginParameters.Username, loginVal.LoginParameters.Password);
 
-           
-
+            Sleep(3000);
             loginPage.ClickLogin();
-            Sleep(2000);
+            Sleep(3000);
 
             var url = _URL + "/dashboard";
             driver.Navigate().GoToUrl(url);
-
+            Sleep(3000);
             return true;
         }
 

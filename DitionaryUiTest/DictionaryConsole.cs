@@ -30,43 +30,60 @@ public class DictionaryConsole
                 data.DataEntryFrequency(driver);
                 Sleep(3000);
 
-
-				ClickDictionary(driver);
-				Sleep(3000);
-				ClickUnit(driver);
-				Sleep(3000);
-				ClickUnitNewRequest(driver);
-				Sleep(3000);
-				data.UnitDataEntry(driver);
-				Sleep(3000);
-
-
-
-				ClickDictionary(driver);
-				Sleep(3000);
-				ClickDataEntity(driver);
-				Sleep(3000);
-				ClickDataEntityNewRequest(driver);
-				Sleep(3000);
-				data.DataEntityEntry(driver);
-				Sleep(3000);
-
-
-				ClickDictionary(driver);
-				Sleep(3000);
-				ClickDataSource(driver);
-				Sleep(3000);
-				ClickDataSourceNewRequest(driver);
-				Sleep(3000);
-				data.DataSourceEntry(driver);
-				Sleep(3000);
                 ClickNewRequest(driver);
                 Sleep(3000);
                 ClickRequestType(driver);
+                CreateNewReqGenericPopUp(driver);
+
+                //--- Dictionary ----//
+
+                ClickDictionary(driver);
+                Sleep(3000);
+                ClickUnit(driver);
+                Sleep(3000);
+                ClickUnitNewRequest(driver);
+                Sleep(3000);
+                data.UnitDataEntry(driver);
+                Sleep(3000);
+
+                ClickNewRequest(driver);
+                Sleep(3000);
+                ClickRequestType(driver);
+                CreateNewReqGenericPopUp(driver);
+
+                ClickDictionary(driver);
+                Sleep(3000);
+                ClickDataEntity(driver);
+                Sleep(3000);
+                ClickDataEntityNewRequest(driver);
+                Sleep(3000);
+                data.DataEntityEntry(driver);
+                Sleep(3000);
+                ClickNewRequest(driver);
+                Sleep(3000);
+                ClickRequestType(driver);
+                CreateNewReqGenericPopUp(driver);
+
+
+                ClickDictionary(driver);
+                Sleep(3000);
+                ClickDataSource(driver);
+                Sleep(4000);
+                ClickDataSourceNewRequest(driver);
+                Sleep(3000);
+                data.DataSourceEntry(driver);
+                Sleep(3000);
+
+                ClickNewRequest(driver);
+                Sleep(3000);
+                ClickRequestType(driver);
+                CreateNewReqGenericPopUp(driver);
 
 
 
-			}
+
+
+            }
 
 
 		}
@@ -387,6 +404,7 @@ public class DictionaryConsole
         }
     }
 
+
     #endregion
 
     #region Data Entities
@@ -471,8 +489,10 @@ public class DictionaryConsole
     {
         try
         {
-            var dataSetLinkNewReq = driver.FindElement(By.CssSelector("a[href^='dictionary/data-sources/add']"));
-            dataSetLinkNewReq.Click();
+            var newReqBtn = driver.FindElement(By.PartialLinkText("New"));
+
+            //var newReqBtn = driver.FindElement(By.CssSelector("a[href^='dictionary/data-sources/add']"));
+            newReqBtn.Click();
             Sleep(3000);
             return true;
         }
@@ -490,7 +510,7 @@ public class DictionaryConsole
             var freqVal = jsonFileReader.ReadJsonFileDataSource();
             var createSec = new DataSources(driver);
 
-            Sleep(3000);
+            Sleep(5000);
 
             createSec.NewDatadataSourceEntry(freqVal.DataSource.Name, freqVal.DataSource.ShortName);
 
