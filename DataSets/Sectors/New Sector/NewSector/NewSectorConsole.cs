@@ -8,7 +8,7 @@ namespace NewSector;
 
 public class NewSectorConsole
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var classObj = new NewSectorConsole();
         var services = new ServiceCollection();
@@ -19,13 +19,18 @@ public class NewSectorConsole
         var _driver = serviceProvider.GetRequiredService<IWebDriver>();
         var _loginService = serviceProvider.GetRequiredService<ILogin>();
         var _sectorService = serviceProvider.GetRequiredService<ISector>();
-        bool login = _loginService.LoginSuccess();
+        bool login = await _loginService.LoginSuccess();
        
         if (login)
         {
             _sectorService.ClickDataSet(_driver);
+            Utils.Sleep(2000);
             _sectorService.ClickSector(_driver);
+            Utils.Sleep(2000);
             _sectorService.CreateNewDataSectorSuccess(_driver);
+            Utils.Sleep(3000);
+            _driver.Quit();
+
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using Contracts.Sectors;
 using OpenQA.Selenium;
 using Newtonsoft.Json;
+using OpenQA.Selenium.Support.UI;
 
 namespace Commons.Services.Sector;
 public class SectorService : ISector
@@ -15,7 +16,7 @@ public class SectorService : ISector
     }
     public virtual IWebElement btnProcessSelected => _webDriver.FindElement(By.Id("btnReqSelect"));
     public virtual IWebElement txtName => _webDriver.FindElement(By.Id("Name"));
-    public virtual IWebElement txtTitle => _webDriver.FindElement(By.Id("Title"));
+    public virtual IWebElement txtTitle => _webDriver.FindElement(By.Id("txtTitle"));
     public virtual IWebElement btnSubmit => _webDriver.FindElement(By.XPath("//input[@type='submit']"));
     public IWebElement btnSubmitRequest => _webDriver.FindElement(By.Id("btnSave"));
     public virtual IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
@@ -23,7 +24,7 @@ public class SectorService : ISector
     public virtual IWebElement btnClickNew => _webDriver.FindElement(By.CssSelector("a.item-button[data-modal='']"));
     public IWebElement txtReson => _webDriver.FindElement(By.Id("txtReason"));
     public virtual IWebElement btnReqSelect => _webDriver.FindElement(By.Id("btnReqSelect"));
-    public virtual IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
+    public virtual IWebElement btnClickOk => _webDriver.FindElement(By.ClassName("confirm"));
     public virtual void EnterNameAndTitle(string userName, string password)
     {
         txtName.SendKeys(userName);
@@ -207,12 +208,13 @@ public class SectorService : ISector
             Utils.Sleep(4000);
             waitBtnReqSelect.Click();
             Utils.Sleep(3000);
-            var waitbox = driver.WaitForElementToBeClickable(txtTitle, 5);
+            driver.WaitForElementToBeClickable(txtTitle, 5);
             EnterRequestInfo(RequestInforVal.RequestInformation.Title, RequestInforVal.RequestInformation.Reason);
             Utils.Sleep(3000);
-            ClickSubmit();
+            SubmitReq();
             Utils.Sleep(6000);
-            ClickOk();
+            var waitOkBtn = driver.WaitForElementToBeClickable(btnClickOk, 15);
+            waitOkBtn.Click();
             string enumString = Enum.GetName(typeof(RequestType), reqType);
             Utils.LogSuccess(enumString, "Sector");
             return true;
@@ -223,7 +225,6 @@ public class SectorService : ISector
             return false;
         }
     }
-
     #region Utility
     public static DataSector ReadJsonFileCreateSector()
     {
@@ -231,7 +232,7 @@ public class SectorService : ISector
         {
             string jsonFileNameSec = "Sector.json";
             string jsonFilePathSec = Path.Combine(desktopPath,
-                 "SeleniumTest", jsonFileNameSec);
+                 "DataConsoleSelenium", jsonFileNameSec);
             if (File.Exists(jsonFilePathSec))
             {
                 var jsonContent = File.ReadAllText(jsonFilePathSec);
@@ -252,8 +253,7 @@ public class SectorService : ISector
         {
             string jsonFileNamex = "Sector.json";
             string jsonFilePathx = Path.Combine(desktopPath,
-                "SeleniumTest", jsonFileNamex);
-
+                "DataConsoleSelenium", jsonFileNamex);
             if (File.Exists(jsonFilePathx))
             {
                 var jsonContent = File.ReadAllText(jsonFilePathx);
@@ -268,6 +268,7 @@ public class SectorService : ISector
             return new Request();
         }
     }
+   
     #endregion
 
 }

@@ -14,7 +14,7 @@ public class JsonFileReader
 
     public static string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
     public const string jsonFileName = "JData.json";
-    public string jsonFilePath = Path.Combine(desktopPath, "SeleniumTest", jsonFileName);
+    public string jsonFilePath = Path.Combine(desktopPath, "DataConsoleSelenium", jsonFileName);
 
     public LoginParameter ReadJsonFileSuccesLogin()
     {
@@ -32,6 +32,25 @@ public class JsonFileReader
         {
             var message = ex.Message;
             return new LoginParameter();
+        }
+    }
+
+    public URLParameter ReadJsonFileURL()
+    {
+        try
+        {
+            if (File.Exists(jsonFilePath))
+            {
+                var jsonContent = File.ReadAllText(jsonFilePath);
+                var retVal = JsonConvert.DeserializeObject<URLParameter>(jsonContent);
+                return retVal;
+            }
+            return new URLParameter();
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            return new URLParameter();
         }
     }
 
@@ -102,7 +121,7 @@ public class JsonFileReader
         try
         {
             string jsonFileNamex = "Request.json";
-            string jsonFilePathx = Path.Combine(desktopPath, "SeleniumTest", jsonFileNamex);
+            string jsonFilePathx = Path.Combine(desktopPath, "DataConsoleSelenium", jsonFileNamex);
             if (File.Exists(jsonFilePathx))
             {
                 var jsonContent = File.ReadAllText(jsonFilePathx);
@@ -232,10 +251,21 @@ public class LoginParameters
     public string Password { get; set; }
 
 }
+public class URLParameters
+{
+    public bool UseHttps { get; set; }
+    public string Url { get; set; }
+    public int Port { get; set; }
+
+}
 
 public class LoginParameter
 {
     public LoginParameters LoginParameters { get; set; }
+}
+public class URLParameter
+{
+    public URLParameters URLParameters { get; set; }
 
 }
 #endregion
@@ -756,22 +786,17 @@ public class FeaturedContentDataSector
     public string StartDate { get; set; }
     public string StopDate { get; set; }
     public string IndicatorsIndexToSelect { get; set; }
-
-
     public string Name { get; set; }
     public string Title { get; set; }
-    public string SeriesTitle { get; set; }
-
+    public string SubTitle { get; set; }
     public int ChartTypeIndex { get; set; }
     public int ContentSpotIndex { get; set; }
-
-    public string Note { get; set; }
-
+    public string ShortContent { get; set; }
+    public string MainContent { get; set; }
     public int[] GetIndexArray()
     {
         return IndicatorsIndexToSelect?.Split(',').Select(int.Parse).ToArray() ?? new int[0];
     }
-
 }
 public class FeaturedContentDataSectorContainer
 {
@@ -788,8 +813,6 @@ public class QFlashDataSector
     public string StartDate { get; set; }
     public string StopDate { get; set; }
     public string IndicatorsIndexToSelect { get; set; }
-
-
     public string Name { get; set; }
     public string Title { get; set; }
     public int ArrowType { get; set; }

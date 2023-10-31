@@ -11,7 +11,7 @@ public class LoginConsole
 {
     private static readonly string _URL = "http://197.255.51.104:9035";
 
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var services = new ServiceCollection();
         services.AddExtDataServices();
@@ -20,7 +20,7 @@ public class LoginConsole
         var serviceProvider = services.BuildServiceProvider();
         var _driver = serviceProvider.GetRequiredService<IWebDriver>();
         var _loginService = serviceProvider.GetRequiredService<ILogin>();
-        bool login = _loginService.LoginSuccess();
+        bool login = await _loginService.LoginSuccess();
 
 
     }

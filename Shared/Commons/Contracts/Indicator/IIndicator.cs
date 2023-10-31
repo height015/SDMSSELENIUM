@@ -34,10 +34,18 @@ public interface IIndicator
     IWebElement liTree { get; }
     IWebElement txtTopLevelBox { get; }
     IList<IWebElement> boxSel { get; }
+    IWebElement btnReqSelect { get; }
+    IWebElement btnConFirm { get; }  
     void EnterRequestInfo(string title, string reason);
     void ClickContinue();
     void ClickSubmit();
     void ClickNew();
     void ClickSave();
     void ClickOk();
+
+    void ClickIndicators(IWebDriver driver);
+    void IndicatorCataloguePopUp(IWebDriver driver);
+    void CreateNewDataIndicatorPopUp(IWebDriver driver);
+    bool CreateNewReqIndicatorPopUp(IWebDriver driver);
+    void IndicatorUploadBulkFile(IWebDriver driver);
 }

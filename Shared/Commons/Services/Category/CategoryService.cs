@@ -10,7 +10,7 @@ public class CategoryService : ICategory
     private static string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
    private const string jsonFileName = "Category.json";
    private static string jsonFilePath = Path.Combine(desktopPath,
-        "SeleniumTest", jsonFileName);
+        "DataConsoleSelenium", jsonFileName);
     private int reqType = -1;
 
     private readonly IWebDriver _webDriver;
@@ -33,7 +33,7 @@ public class CategoryService : ICategory
     public IWebElement btnSubmitReq => _webDriver.FindElement(By.Id("btnSave"));
 
     public IWebElement btnClose => _webDriver.FindElement(By.CssSelector("button.btn.btn-secondary[data-dismiss='modal']"));
-    public IWebElement btnClickOk => _webDriver.FindElement(By.CssSelector("button.confirm[style*='display: inline-block;'][style*='background-color: rgb(140, 212, 245);']"));
+    public IWebElement btnClickOk => _webDriver.FindElement(By.ClassName("confirm"));
     public IWebElement txtTitle => _webDriver.FindElement(By.Id("txtTitle"));
     public IWebElement txtReson => _webDriver.FindElement(By.Id("txtReason"));
 
@@ -143,32 +143,32 @@ public class CategoryService : ICategory
         try
         {
             JsonFileReader jsonFileReader = new();
-            var loginVal = jsonFileReader.ReadJsonFileSelectCheckBoxes();
+            var retVals = jsonFileReader.ReadJsonFileSelectCheckBoxes();
+            reqType = retVals.CheckBoxNumbers.RequestType;
             var RequestInforVal = ReadJsonFileForSelectCheckBoxesProcessCatNewRequest();
             Utils.Sleep(3000);
             IWebElement overlappingDiv = driver.FindElement(By.CssSelector(".col-7.text-right"));
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].style.display='none';", overlappingDiv);
-            IWebElement button = driver.FindElement(By.Id("btnReqSelect"));
             if (rows.Count > 10)
             {
-                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", button);
+                ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, 0);");
             }
             //or Use this
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("window.scrollTo(0, 0);");
             Utils.Sleep(3000);
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            var dataSetLink = wait.Until(d => d.FindElement(By.Id("btnReqSelect")));
-            //The UtilMethods.Sleep is Inportant so the Pop-Div is loaded to the  DOM
+            var btnReqSelect = driver.WaitForElementToBeClickable(driver.FindElement(By.Id("btnReqSelect")), 10);
             Utils.Sleep(4000);
-            button.Click();
+            btnReqSelect.Click();
             Utils.Sleep(3000);
             EnterRequestInfo(RequestInforVal.CatRequestInformation.Title, RequestInforVal.CatRequestInformation.Reason);
             Utils.Sleep(2000);
             var submit = driver.WaitForElementToBeClickable(btnSubmitReq, 10);
             submit.Click();
             Utils.Sleep(3000);
-            ClickOk();
+            var OkBtn = driver.WaitForElementToBeClickable(btnClickOk, 15);
+            OkBtn.Click();
             string enumString = Enum.GetName(typeof(RequestType), reqType);
             Utils.LogSuccess(enumString, "Category");
             return true;

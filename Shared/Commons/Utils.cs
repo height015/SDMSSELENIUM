@@ -30,7 +30,6 @@ public class Utils
                 catch (Exception)
                 {
                 }
-
                 StreamWriter streamWriter = new StreamWriter(text, append: true);
                 string text3 = "\r\n";
                 text3 += "<New Error>\r\n";
@@ -96,7 +95,7 @@ public class Utils
     {
         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string jsonFilePathx = Path.Combine(desktopPath,
-            "SeleniumTest", jsonFileNamex);
+            "DataConsoleSelenium", jsonFileNamex);
         return jsonFilePathx;
     }
 

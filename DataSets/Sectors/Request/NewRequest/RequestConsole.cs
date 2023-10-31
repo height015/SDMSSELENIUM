@@ -9,7 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace NewRequest;
 public class RequestConsole
 {
-   public static void Main(string[] args)
+   public static async Task Main(string[] args)
     {
         var classObj = new RequestConsole();
         var services = new ServiceCollection();
@@ -20,8 +20,8 @@ public class RequestConsole
         var _driver = serviceProvider.GetRequiredService<IWebDriver>();
         var _loginService = serviceProvider.GetRequiredService<ILogin>();
         var _sectorService = serviceProvider.GetRequiredService<ISector>();
-        bool login = _loginService.LoginSuccess();
-        if (true)
+        bool login = await _loginService.LoginSuccess();
+        if (login)
         {
             _sectorService.ClickDataSet(_driver);
             Utils.Sleep(3000);
@@ -30,8 +30,11 @@ public class RequestConsole
             _sectorService.ClickNewRequest(_driver);
             Utils.Sleep(3000);
             _sectorService.ClickRequestType(_driver);
-            Utils.Sleep(3000);
+            Utils.Sleep(5000);
             _sectorService.RequestInfBox(_driver);
+            Utils.Sleep(3000);
+            _driver.Quit();
+            _driver.Dispose();
         }
     }
 

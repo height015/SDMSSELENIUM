@@ -10,7 +10,7 @@ namespace CategoryRequest;
 
 public class CategoryRequestConsole
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
 
         var classObj = new CategoryRequestConsole();
@@ -22,7 +22,7 @@ public class CategoryRequestConsole
         var _loginService = serviceProvider.GetRequiredService<ILogin>();
         var _sectorService = serviceProvider.GetRequiredService<ISector>();
         var _categoryService = serviceProvider.GetRequiredService<ICategory>();
-        bool login = _loginService.LoginSuccess();
+        bool login = await _loginService.LoginSuccess();
 
         if (login)
         {
@@ -34,6 +34,8 @@ public class CategoryRequestConsole
             _sectorService.ClickRequestType(_driver);
             Utils.Sleep(3000);
             _categoryService.CategoryRequestInfBox(_driver);
+            Utils.Sleep(3000);
+            _driver.Dispose();
         }
     }
 }

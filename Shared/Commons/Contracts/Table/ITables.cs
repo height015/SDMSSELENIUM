@@ -34,7 +34,7 @@ public interface ITables
     IWebElement table { get; }
     IWebElement btnApply { get; }
     List<IWebElement> rows { get; }
-
+    IWebElement btnConFirm { get; } 
     void EnterTableInfoData(string name, string titile, string desc);
     void EnterRequestInfo(string title, string reason);
     void Enable(IWebElement webElement);
@@ -44,4 +44,9 @@ public interface ITables
     void ClickUpdate();
     void ClickNew();
     void ClickOk();
+
+    void TableCatalogueSelectorPopUp(IWebDriver driver);
+    void TableCreateNewPopUp(IWebDriver driver);
+    bool TableCreateNewReqPopUp(IWebDriver driver);
+    void TableUploadBulkFile(IWebDriver driver);
 }
